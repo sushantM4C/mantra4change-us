@@ -3,5 +3,4 @@ Thumbs.db
 node_modules/
 *.log
 tools/india.geojson
-tools/india-map.json
 tools/__pycache__/
