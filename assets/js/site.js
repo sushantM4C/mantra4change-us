@@ -1,0 +1,372 @@
+/* Mantra4Change US — site behaviour.
+   No framework, no build step. Everything degrades gracefully without JS. */
+(function () {
+  "use strict";
+
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var $  = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+
+  /* ---------------------------------------------------------- mobile nav */
+  function initNav() {
+    var toggle = $(".nav__toggle");
+    var links  = $(".nav__links");
+    if (!toggle || !links) return;
+
+    toggle.addEventListener("click", function () {
+      var open = toggle.getAttribute("aria-expanded") === "true";
+      toggle.setAttribute("aria-expanded", String(!open));
+      links.setAttribute("data-open", String(!open));
+    });
+
+    links.addEventListener("click", function (e) {
+      if (e.target.closest("a")) {
+        toggle.setAttribute("aria-expanded", "false");
+        links.setAttribute("data-open", "false");
+      }
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") {
+        toggle.setAttribute("aria-expanded", "false");
+        links.setAttribute("data-open", "false");
+      }
+    });
+  }
+
+  /* ------------------------------------------------------- scroll reveal */
+  function initReveal() {
+    var els = $$("[data-reveal]");
+    if (!els.length) return;
+    if (reduced || !("IntersectionObserver" in window)) {
+      els.forEach(function (el) { el.classList.add("is-in"); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var el = entry.target;
+        var delay = parseInt(el.getAttribute("data-reveal-delay") || "0", 10);
+        setTimeout(function () { el.classList.add("is-in"); }, delay);
+        io.unobserve(el);
+      });
+    }, { rootMargin: "0px 0px -12% 0px", threshold: 0.08 });
+    els.forEach(function (el) { io.observe(el); });
+  }
+
+  /* ------------------------------------------------------------ counters */
+  function formatNum(v, decimals) {
+    return v.toLocaleString("en-US", {
+      minimumFractionDigits: decimals,
+      maximumFractionDigits: decimals
+    });
+  }
+
+  function runCount(el) {
+    var target   = parseFloat(el.getAttribute("data-count"));
+    var decimals = parseInt(el.getAttribute("data-decimals") || "0", 10);
+    var prefix   = el.getAttribute("data-prefix") || "";
+    var suffix   = el.getAttribute("data-suffix") || "";
+    if (isNaN(target)) return;
+
+    if (reduced) { el.textContent = prefix + formatNum(target, decimals) + suffix; return; }
+
+    var duration = 1500;
+    var start = null;
+    function frame(ts) {
+      if (start === null) start = ts;
+      var p = Math.min((ts - start) / duration, 1);
+      var eased = 1 - Math.pow(1 - p, 3);           // easeOutCubic
+      el.textContent = prefix + formatNum(target * eased, decimals) + suffix;
+      if (p < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+
+  function initCounters() {
+    var els = $$("[data-count]");
+    if (!els.length) return;
+    if (!("IntersectionObserver" in window)) { els.forEach(runCount); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        runCount(entry.target);
+        io.unobserve(entry.target);
+      });
+    }, { threshold: 0.4 });
+    els.forEach(function (el) { io.observe(el); });
+  }
+
+  /* ----------------------------------------------------------- accordion */
+  function initFaq() {
+    $$(".faq__q").forEach(function (btn) {
+      var panel = document.getElementById(btn.getAttribute("aria-controls"));
+      if (!panel) return;
+
+      btn.addEventListener("click", function () {
+        var open = btn.getAttribute("aria-expanded") === "true";
+
+        // close siblings within the same .faq group
+        var group = btn.closest(".faq");
+        if (group && !open) {
+          $$(".faq__q[aria-expanded='true']", group).forEach(function (other) {
+            var op = document.getElementById(other.getAttribute("aria-controls"));
+            other.setAttribute("aria-expanded", "false");
+            if (op) op.style.height = "0px";
+          });
+        }
+
+        btn.setAttribute("aria-expanded", String(!open));
+        panel.style.height = open ? "0px" : panel.scrollHeight + "px";
+      });
+
+      // keep an open panel correctly sized on resize
+      window.addEventListener("resize", function () {
+        if (btn.getAttribute("aria-expanded") === "true") {
+          panel.style.height = panel.scrollHeight + "px";
+        }
+      });
+    });
+  }
+
+  /* ---------------------------------------------------------------- tabs */
+  function initTabs() {
+    $$("[data-tabs]").forEach(function (group) {
+      var tabs = $$(".tab", group);
+
+      function select(tab) {
+        tabs.forEach(function (t) {
+          var on = t === tab;
+          t.setAttribute("aria-selected", String(on));
+          t.setAttribute("tabindex", on ? "0" : "-1");
+          var panel = document.getElementById(t.getAttribute("aria-controls"));
+          if (panel) panel.hidden = !on;
+        });
+      }
+
+      tabs.forEach(function (tab, i) {
+        tab.addEventListener("click", function () { select(tab); });
+        tab.addEventListener("keydown", function (e) {
+          var next = null;
+          if (e.key === "ArrowRight") next = tabs[(i + 1) % tabs.length];
+          if (e.key === "ArrowLeft")  next = tabs[(i - 1 + tabs.length) % tabs.length];
+          if (next) { e.preventDefault(); next.focus(); select(next); }
+        });
+      });
+    });
+  }
+
+  /* ---------------------------------------------------------- india map */
+  var ACCENTS = {
+    navy: "#273f7d", sky: "#00b1ff", green: "#38c68b",
+    amber: "#ffcb37", orange: "#f59a3d", steel: "#95b3d7"
+  };
+
+  function stateInfo(name) {
+    if (typeof STATE_DATA === "undefined") return null;
+    for (var i = 0; i < STATE_DATA.length; i++) {
+      if (STATE_DATA[i].name === name) return STATE_DATA[i];
+    }
+    return null;
+  }
+
+  function buildMap(host) {
+    if (typeof INDIA_MAP === "undefined") return null;
+    var NS = "http://www.w3.org/2000/svg";
+    var svg = document.createElementNS(NS, "svg");
+    svg.setAttribute("viewBox", INDIA_MAP.viewBox);
+    svg.setAttribute("class", "map");
+    svg.setAttribute("role", "img");
+    svg.setAttribute("aria-label", "Map of India showing the six states where Mantra4Change works");
+
+    var order = 0;
+    INDIA_MAP.states.forEach(function (s) {
+      var path = document.createElementNS(NS, "path");
+      path.setAttribute("d", s.d);
+      path.setAttribute("class", "map__state" + (s.on ? " map__state--active" : ""));
+      path.setAttribute("data-state", s.name);
+
+      if (s.on) {
+        var info = stateInfo(s.name);
+        if (info && ACCENTS[info.accent]) path.style.fill = ACCENTS[info.accent];
+        path.style.animationDelay = (order * 90) + "ms";
+        order++;
+      }
+      svg.appendChild(path);
+    });
+
+    host.appendChild(svg);
+
+    if (!reduced && host.hasAttribute("data-animate")) {
+      svg.classList.add("map--animate");
+      // A `forwards` animation outranks normal declarations in the cascade, which
+      // would pin opacity at 1 and break the selection dimming. Drop the class
+      // once the stagger has finished playing.
+      setTimeout(function () { svg.classList.remove("map--animate"); }, order * 90 + 700);
+    }
+    return svg;
+  }
+
+  function renderInfo(panel, info) {
+    if (!info) return;
+    var rows = [
+      ["schools",  "Schools reached"],
+      ["leaders",  "Education leaders"],
+      ["children", "Children reached"]
+    ].map(function (r) {
+      return '<div class="mapinfo__num"><b class="tnum">' + info[r[0]] + "</b><span>" + r[1] + "</span></div>";
+    }).join("");
+
+    panel.innerHTML =
+      '<div class="mapinfo__name">' + info.name + "</div>" +
+      '<div class="mapinfo__nums">' + rows + "</div>" +
+      '<p class="mapinfo__note">' + info.note + "</p>" +
+      (info.budget ? '<p class="small" style="margin-top:1rem;color:var(--muted)"><strong>' + info.budget + "</strong></p>" : "");
+  }
+
+  function initMaps() {
+    $$("[data-map]").forEach(function (host) {
+      var svg = buildMap(host);
+      if (!svg || !host.hasAttribute("data-interactive")) return;
+
+      var panel = $("[data-mapinfo]");
+      var pills = $$("[data-statepill]");
+      var paths = $$(".map__state--active", svg);
+
+      function select(name) {
+        svg.classList.add("map--haspick");
+        paths.forEach(function (p) {
+          p.setAttribute("data-selected", String(p.getAttribute("data-state") === name));
+        });
+        pills.forEach(function (b) {
+          b.setAttribute("aria-pressed", String(b.getAttribute("data-statepill") === name));
+        });
+        if (panel) renderInfo(panel, stateInfo(name));
+      }
+
+      paths.forEach(function (p) {
+        var name = p.getAttribute("data-state");
+        p.setAttribute("tabindex", "0");
+        p.setAttribute("role", "button");
+        p.setAttribute("aria-label", name + " — view impact figures");
+        p.addEventListener("click", function () { select(name); });
+        p.addEventListener("keydown", function (e) {
+          if (e.key === "Enter" || e.key === " ") { e.preventDefault(); select(name); }
+        });
+      });
+
+      pills.forEach(function (b) {
+        b.addEventListener("click", function () { select(b.getAttribute("data-statepill")); });
+      });
+
+      select(host.getAttribute("data-default") || "Bihar");
+    });
+  }
+
+  /* --------------------------------------------------------- board + bio */
+  function initials(name) {
+    return name.split(/\s+/).filter(Boolean).map(function (w) { return w[0]; })
+               .slice(0, 2).join("").toUpperCase();
+  }
+
+  var LI_ICON = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.4 8.65 21 11.1 21 14.3V21h-4v-6c0-1.43-.03-3.27-2-3.27-2 0-2.3 1.56-2.3 3.17V21H9z"/></svg>';
+
+  var ACCENT_CYCLE = ["a-navy", "a-sky", "a-green", "a-amber", "a-orange", "a-steel"];
+
+  function personCard(person, i) {
+    var hasBio = Array.isArray(person.bio) && person.bio.length;
+    var el = document.createElement(hasBio ? "button" : "div");
+    el.className = "person " + ACCENT_CYCLE[i % ACCENT_CYCLE.length] + (hasBio ? " person--clickable" : "");
+    if (hasBio) { el.type = "button"; el.setAttribute("aria-haspopup", "dialog"); }
+
+    el.innerHTML =
+      '<div class="person__avatar" aria-hidden="true">' + initials(person.name) + "</div>" +
+      '<div class="person__name">' + person.name + "</div>" +
+      '<div class="person__role">' + person.role + "</div>" +
+      (person.li && !hasBio
+        ? '<div class="person__links"><a href="' + person.li + '" target="_blank" rel="noopener" aria-label="' + person.name + ' on LinkedIn">' + LI_ICON + "</a></div>"
+        : "") +
+      (hasBio ? '<div class="person__more">Read bio &rarr;</div>' : "");
+
+    if (hasBio) el.addEventListener("click", function () { openBio(person); });
+    return el;
+  }
+
+  var lastFocused = null;
+
+  function openBio(person) {
+    var modal = $("#bio-modal");
+    if (!modal) return;
+    lastFocused = document.activeElement;
+
+    $("#bio-name").textContent = person.name;
+    $("#bio-role").textContent = person.role;
+    $("#bio-avatar").textContent = initials(person.name);
+    $("#bio-text").innerHTML = person.bio.map(function (p) { return "<p>" + p + "</p>"; }).join("");
+
+    var link = $("#bio-link");
+    if (person.li) { link.href = person.li; link.hidden = false; } else { link.hidden = true; }
+
+    modal.hidden = false;
+    document.body.style.overflow = "hidden";
+    $(".modal__close", modal).focus();
+  }
+
+  function closeBio() {
+    var modal = $("#bio-modal");
+    if (!modal || modal.hidden) return;
+    modal.hidden = true;
+    document.body.style.overflow = "";
+    if (lastFocused) lastFocused.focus();
+  }
+
+  function initBoard() {
+    var host = $("[data-board]");
+    if (!host || typeof BOARD === "undefined") return;
+
+    Object.keys(BOARD).forEach(function (key) {
+      var panel = document.getElementById("panel-" + key);
+      if (!panel) return;
+      BOARD[key].groups.forEach(function (group) {
+        var h = document.createElement("h3");
+        h.className = "t-h3 mt-3";
+        h.textContent = group.title;
+        panel.appendChild(h);
+
+        var grid = document.createElement("div");
+        grid.className = "grid grid-4 mt-2";
+        group.people.forEach(function (p, i) { grid.appendChild(personCard(p, i)); });
+        panel.appendChild(grid);
+      });
+    });
+
+    var modal = $("#bio-modal");
+    if (!modal) return;
+    $(".modal__close", modal).addEventListener("click", closeBio);
+    modal.addEventListener("click", function (e) { if (e.target === modal) closeBio(); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeBio(); });
+  }
+
+  /* ---------------------------------------------------------------- misc */
+  function initYear() {
+    $$("[data-year]").forEach(function (el) { el.textContent = new Date().getFullYear(); });
+  }
+
+  /* ---------------------------------------------------------------- boot */
+  function boot() {
+    initNav();
+    initBoard();     // build cards before reveal/observers attach
+    initMaps();
+    initReveal();
+    initCounters();
+    initFaq();
+    initTabs();
+    initYear();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", boot);
+  } else {
+    boot();
+  }
+})();
