@@ -405,6 +405,50 @@
     document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeBio(); });
   }
 
+  /* ----------------------------------------------------------- carousel */
+  /* Crossfades through the hero photographs. Pauses on hover and on focus so
+     it never yanks the image out from under someone reading a caption, and
+     holds on the first frame when reduced motion is requested. */
+  function initCarousel() {
+    $$("[data-carousel]").forEach(function (root) {
+      var slides = $$(".carousel__slide", root);
+      if (slides.length < 2) return;
+
+      var gap = parseInt(root.getAttribute("data-interval") || "3000", 10);
+      var dotWrap = $(".carousel__dots", root);
+      var i = 0, timer = null;
+
+      var dots = slides.map(function (_, n) {
+        var d = document.createElement("button");
+        d.type = "button";
+        d.className = "carousel__dot";
+        d.setAttribute("aria-label", "Show photograph " + (n + 1) + " of " + slides.length);
+        d.addEventListener("click", function () { go(n); restart(); });
+        if (dotWrap) dotWrap.appendChild(d);
+        return d;
+      });
+
+      function go(n) {
+        i = (n + slides.length) % slides.length;
+        slides.forEach(function (s, k) { s.classList.toggle("is-on", k === i); });
+        dots.forEach(function (d, k) { d.setAttribute("aria-current", String(k === i)); });
+      }
+      function start() { if (!reduced && !timer) timer = setInterval(function () { go(i + 1); }, gap); }
+      function stop()  { clearInterval(timer); timer = null; }
+      function restart() { stop(); start(); }
+
+      go(0);
+      start();
+      root.addEventListener("mouseenter", stop);
+      root.addEventListener("mouseleave", start);
+      root.addEventListener("focusin", stop);
+      root.addEventListener("focusout", start);
+      document.addEventListener("visibilitychange", function () {
+        if (document.hidden) stop(); else start();
+      });
+    });
+  }
+
   /* -------------------------------------------------------------- video */
   /* Click-to-play facade: no YouTube script loads until the visitor asks for
      it, which keeps the page light and avoids third-party cookies on arrival. */
@@ -449,6 +493,7 @@
     initCounters();
     initFaq();
     initTabs();
+    initCarousel();
     initVideo();
     initYear();
   }

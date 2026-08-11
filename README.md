@@ -102,6 +102,23 @@ icons in the Mantra style, rather than generic stroke glyphs. They live in
 the clustered artwork into individual icons and `tools/build_icons.py` recolours
 and pads them. To add one, drop the source cluster in and rerun both.
 
+### Hero carousel
+
+Five photographs crossfade in the home hero on a 3-second cycle. It pauses on
+hover and on focus, stops when the tab is hidden, and holds on the first frame
+when the visitor prefers reduced motion. Dots sit bottom-left (a centred strip
+collides with the floating stat card). To change the photographs, edit the
+`<img class="carousel__slide">` list in `index.html`; the dots build themselves
+from however many slides are present. Timing is the `data-interval` attribute.
+
+### Donations
+
+Every donate call to action points at
+`https://www.every.org/mantra-4-change#/donate/card` and opens in a new tab.
+Nav and footer "Donate" links still go to `donate.html`, which carries the
+giving levels, ways to give, transparency and donor FAQs. To change the
+processor, search for `every.org` across the four HTML files.
+
 ### Video
 
 The home page embeds *Mantra4Change | Our Journey* as a click-to-play facade:
@@ -113,7 +130,7 @@ light and avoids third-party cookies on arrival. Change the video by editing the
 
 | File | Where it appears |
 |---|---|
-| `assets/img/hero.jpg` | Home hero, inside the rounded frame |
+| `assets/img/hero-1..5.jpg` | Home hero carousel, crossfading every 3s |
 | `assets/img/break-wide.jpg` | Home, full-bleed band between Challenge and Approach |
 | `assets/img/community.jpg` | Our Work, beside the communities narrative |
 | `assets/img/board/*.jpg` | Board cards and bio modals |
