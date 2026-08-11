@@ -638,7 +638,7 @@ p:last-child { margin-bottom: 0; }
   display: flex; align-items: center; gap: .9rem;
 }
 .floatcard--br { right: -8px; bottom: -22px; }
-.floatcard--tl { left: -22px; top: 8%; }
+.floatcard--tl { left: -42px; top: 5%; }
 .floatcard__n { font-family: var(--display); font-weight: 800; font-size: 1.5rem; letter-spacing: -.03em; color: var(--navy); line-height: 1; }
 .floatcard__l { font-size: .78rem; color: var(--muted); margin-top: .2rem; }
 .floatcard__icon { width: 38px; height: 38px; border-radius: 11px; display: grid; place-items: center; background: var(--accent-soft, rgba(0,177,255,.12)); color: var(--navy); flex: none; }
@@ -879,3 +879,52 @@ p:last-child { margin-bottom: 0; }
   .floatcard__icon svg { width: 16px; height: 16px; }
   .birds { opacity: .7; }
 }
+
+/* ==========================================================================
+   FULL-BLEED IMAGE BAND — a visual break between content sections
+   ========================================================================== */
+.imgband { position: relative; overflow: hidden; }
+.imgband__media { display: block; width: 100%; height: clamp(300px, 40vw, 520px); object-fit: cover; object-position: center 38%; }
+.imgband__scrim {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(20,32,60,.10) 0%, rgba(20,32,60,.20) 40%, rgba(20,32,60,.86) 100%);
+  display: flex; align-items: flex-end;
+}
+.imgband__inner { width: 100%; padding-block: clamp(1.75rem, 4vw, 3rem); }
+.imgband__q {
+  font-family: var(--display); font-weight: 700; letter-spacing: -.02em;
+  font-size: clamp(1.15rem, 2.4vw, 1.85rem); line-height: 1.35; color: #fff;
+  max-width: 34ch; margin: 0;
+}
+.imgband__cap {
+  display: inline-flex; align-items: center; gap: .5rem; margin-top: .9rem;
+  font-size: .8rem; letter-spacing: .05em; text-transform: uppercase;
+  font-weight: 600; color: rgba(255,255,255,.7);
+}
+.imgband__cap::before { content: ""; width: 22px; height: 2px; background: var(--sky); border-radius: 2px; }
+.imgband .birds { z-index: 2; }
+
+/* photo inside a split section */
+.photo {
+  position: relative; border-radius: var(--r-lg); overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+.photo img { display: block; width: 100%; height: 100%; object-fit: cover; aspect-ratio: var(--ar, 4/3); }
+.photo__tag {
+  position: absolute; left: 1rem; bottom: 1rem;
+  background: rgba(255,255,255,.94); backdrop-filter: blur(6px);
+  border-radius: 100px; padding: .5rem 1rem;
+  font-family: var(--display); font-weight: 700; font-size: .8rem; color: var(--navy);
+}
+/* offset accent block, same device as the hero figure */
+.photo-wrap { position: relative; }
+.photo-wrap::before {
+  content: ""; position: absolute; inset: 22px -22px -22px 22px;
+  border-radius: var(--r-lg); background: var(--accent, var(--sky)); opacity: .2;
+}
+.photo-wrap .photo { position: relative; z-index: 1; }
+
+/* Decorative offset blocks can bleed past the viewport on narrow screens.
+   `overflow-x: clip` contains them without creating a scroll container, so
+   position:sticky inside these sections keeps working (overflow:hidden would break it). */
+.band { overflow-x: clip; }

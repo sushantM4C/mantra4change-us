@@ -94,6 +94,19 @@ link, change it in all four files.
 Per the brandbook, a primary blue appears on every page; secondaries are accents only.
 Type is **Figtree** for display and **Inter** for body, loaded from Google Fonts.
 
+### Photography
+
+| File | Where it appears |
+|---|---|
+| `assets/img/hero.jpg` | Home hero, inside the rounded frame |
+| `assets/img/break-wide.jpg` | Home, full-bleed band between Challenge and Approach |
+| `assets/img/community.jpg` | Our Work, beside the communities narrative |
+| `assets/img/board/*.jpg` | Board cards and bio modals |
+
+Board photos are square crops centred on the face, generated with
+`tools/crop_faces.py`. Any member without a file falls back to their initials,
+so photos can be added or replaced one at a time with no code change.
+
 ### The footprint map
 
 `tools/build_map.py` dissolves public district boundaries into state outlines, simplifies
@@ -108,11 +121,10 @@ the rest render as a pale base layer. To change which states are active, edit th
 
 Items that need real information — each is marked with a `TODO` comment in the source:
 
-1. **Hero photograph** — save one image as `assets/img/hero.jpg` (landscape, 4:3,
-   at least 1200px wide). Until then the hero shows a labelled placeholder frame.
-2. **Board photographs** — drop square JPGs into `assets/img/board/` using the
-   exact filenames listed in `assets/img/board/README.txt`. Anyone without a photo
-   shows their initials, so you can add them a few at a time.
+1. **More photography** — three photographs are in use (hero, a full-bleed break on
+   the home page, and the community image on Our Work). The Donate page and the
+   Board hero could each take one more. Drop files into `assets/img/` and reference
+   them the same way.
 2. **Donation form** — every "Donate" button currently points at an anchor on
    `donate.html`. Swap in the real payment URL (Givebutter, Donorbox, Benevity, etc.).
    Search for `#donate-options` and `#give`.

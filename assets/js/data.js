@@ -6,7 +6,7 @@
    BOARD       Mantra4Change US board, from the 2026-27 board CSV
 
    Board photos: drop square JPGs at assets/img/board/<slug>.jpg
-   Slugs: rashi-mehta, cornelius-walter, pradeep-nair, ambili-sukesan, charag-krishnan, esther-wojcicki, rajiv-murali, kirti-reddy, vivek-ragavan, aditya-vishwanath, radhika-shah, prashanth-reddy
+   Slugs: aditya-vishwanath, ambili-sukesan, charag-krishnan, cornelius-walter, esther-wojcicki, kirti-reddy, pradeep-nair, rajiv-murali, rashi-mehta, vivek-ragavan, prashanth-reddy, radhika-shah
    A missing photo falls back to initials automatically. */
 
 const INDIA_MAP = {
@@ -74,32 +74,10 @@ const BOARD = [
     "blurb": "Ten leaders across technology, consulting, investment, real estate and education, guiding the strategy and stewardship of the US entity.",
     "people": [
       {
-        "name": "Rashi Mehta",
-        "role": "Founder & Chair, Iron Lady Foundation",
-        "li": "https://www.linkedin.com/in/raashi/",
-        "slug": "rashi-mehta",
-        "bio": [
-          "Rashi Mehta is a global entrepreneur, executive coach, and philanthropy leader whose work brings together business, leadership, and social impact.",
-          "As Co-Founder of Rahi Systems, Rashi helped build a bootstrapped Silicon Valley startup into a global technology company operating in more than 25 countries before its successful acquisition by Wesco, a Fortune 200 company. Without external funding, she led the company's financial strategy and operations through every stage of growth, helping transform an entrepreneurial vision into a thriving international enterprise. Reflecting on that journey, she often says, “Building something from the ground up teaches you that resilience, discipline, and people matter far more than resources.”",
-          "Passionate about helping others unlock their potential, Rashi studied Executive Coaching at UC Berkeley and has coached CEOs, CFOs, and senior leaders across industries. She believes that leadership is not defined by position or title, but by the ability to inspire and serve others. “The best leaders never stop learning, and they never stop lifting others as they rise,” she says.",
-          "Rashi serves on the Board of the Make-A-Wish Foundation Greater Bay Area, supporting its mission to bring hope and joy to children facing critical illnesses.",
-          "In 2024, she founded the Iron Lady Foundation in memory of her mother, Dr. Leela Mehta, a pioneering gynecologist whose life of compassion, courage, and service inspired generations. Guided by the belief that every woman and child deserves dignity, opportunity, and the chance to thrive, the Foundation works across education, healthcare, clean water, sanitation, and women's economic empowerment.",
-          "For Rashi, philanthropy is deeply personal. “Real change happens when communities are empowered to shape their own future,” she says. Through community-led initiatives, the Iron Lady Foundation is helping create opportunities that strengthen families and spark lasting generational change.",
-          "At the heart of everything Rashi does is a belief she learned from the women who shaped her life: “When you empower one woman, you don't just change her life—you change the lives of everyone she touches.”"
-        ]
-      },
-      {
-        "name": "Cornelius Walter",
-        "role": "Deputy Head, Administration of the Princely Assets Liechtenstein",
-        "li": "https://www.linkedin.com/in/cornelius-walter/",
-        "slug": "cornelius-walter",
-        "bio": []
-      },
-      {
-        "name": "Pradeep Nair",
-        "role": "Principal & Strategic Advisor, Flat Cosmos",
-        "li": "https://www.linkedin.com/in/pdnair/",
-        "slug": "pradeep-nair",
+        "name": "Aditya Vishwanath",
+        "role": "Co-Founder and Board Director, MakerGhat",
+        "li": "https://www.linkedin.com/in/adityavishwanath/",
+        "slug": "aditya-vishwanath",
         "bio": []
       },
       {
@@ -117,17 +95,17 @@ const BOARD = [
         "bio": []
       },
       {
+        "name": "Cornelius Walter",
+        "role": "Deputy Head, Administration of the Princely Assets Liechtenstein",
+        "li": "https://www.linkedin.com/in/cornelius-walter/",
+        "slug": "cornelius-walter",
+        "bio": []
+      },
+      {
         "name": "Esther Wojcicki",
         "role": "Founder of ParentingTRICK App and Treehub by AI Health Fund",
         "li": "https://www.linkedin.com/in/estherwojcicki/",
         "slug": "esther-wojcicki",
-        "bio": []
-      },
-      {
-        "name": "Rajiv Murali",
-        "role": "Managing Director and Partner, Boston Consulting Group (BCG)",
-        "li": "https://www.linkedin.com/in/rajivmurali/",
-        "slug": "rajiv-murali",
         "bio": []
       },
       {
@@ -138,17 +116,39 @@ const BOARD = [
         "bio": []
       },
       {
+        "name": "Pradeep Nair",
+        "role": "Principal & Strategic Advisor, Flat Cosmos",
+        "li": "https://www.linkedin.com/in/pdnair/",
+        "slug": "pradeep-nair",
+        "bio": []
+      },
+      {
+        "name": "Rajiv Murali",
+        "role": "Managing Director and Partner, Boston Consulting Group (BCG)",
+        "li": "https://www.linkedin.com/in/rajivmurali/",
+        "slug": "rajiv-murali",
+        "bio": []
+      },
+      {
+        "name": "Rashi Mehta",
+        "role": "Founder & Chair, Iron Lady Foundation",
+        "li": "https://www.linkedin.com/in/raashi/",
+        "slug": "rashi-mehta",
+        "bio": [
+          "Rashi Mehta is a global entrepreneur, executive coach, and philanthropy leader whose work brings together business, leadership, and social impact.",
+          "As Co-Founder of Rahi Systems, Rashi helped build a bootstrapped Silicon Valley startup into a global technology company operating in more than 25 countries before its successful acquisition by Wesco, a Fortune 200 company. Without external funding, she led the company's financial strategy and operations through every stage of growth, helping transform an entrepreneurial vision into a thriving international enterprise. Reflecting on that journey, she often says, “Building something from the ground up teaches you that resilience, discipline, and people matter far more than resources.”",
+          "Passionate about helping others unlock their potential, Rashi studied Executive Coaching at UC Berkeley and has coached CEOs, CFOs, and senior leaders across industries. She believes that leadership is not defined by position or title, but by the ability to inspire and serve others. “The best leaders never stop learning, and they never stop lifting others as they rise,” she says.",
+          "Rashi serves on the Board of the Make-A-Wish Foundation Greater Bay Area, supporting its mission to bring hope and joy to children facing critical illnesses.",
+          "In 2024, she founded the Iron Lady Foundation in memory of her mother, Dr. Leela Mehta, a pioneering gynecologist whose life of compassion, courage, and service inspired generations. Guided by the belief that every woman and child deserves dignity, opportunity, and the chance to thrive, the Foundation works across education, healthcare, clean water, sanitation, and women's economic empowerment.",
+          "For Rashi, philanthropy is deeply personal. “Real change happens when communities are empowered to shape their own future,” she says. Through community-led initiatives, the Iron Lady Foundation is helping create opportunities that strengthen families and spark lasting generational change.",
+          "At the heart of everything Rashi does is a belief she learned from the women who shaped her life: “When you empower one woman, you don't just change her life—you change the lives of everyone she touches.”"
+        ]
+      },
+      {
         "name": "Vivek Ragavan",
         "role": "Board Director",
         "li": "https://www.linkedin.com/in/vivek-ragavan-0b974/",
         "slug": "vivek-ragavan",
-        "bio": []
-      },
-      {
-        "name": "Aditya Vishwanath",
-        "role": "Co-Founder and Board Director, MakerGhat",
-        "li": "https://www.linkedin.com/in/adityavishwanath/",
-        "slug": "aditya-vishwanath",
         "bio": []
       }
     ]
@@ -158,15 +158,6 @@ const BOARD = [
     "blurb": "Advisors bringing deep experience in global innovation, sustainable development and healthcare strategy.",
     "people": [
       {
-        "name": "Radhika Shah",
-        "role": "Co-Founder and Co-President, Stanford Alumni Alliance on Innovation for Global Impact · Founding Co-Chair, United Nations Joint SDG Fund Breakthrough Alliance for Climate",
-        "li": "https://www.linkedin.com/in/radhikashah1/",
-        "slug": "radhika-shah",
-        "bio": [
-          "Radhika Shah is a technology and impact investor, entrepreneur, and ecosystem builder. She has served as Co-President of Stanford Angels & Entrepreneurs and is Co-Founder and Co-President of the Stanford Alumni Alliance on Innovation for Global Impact. She is also the Founding Co-Chair of the UN Joint SDG Fund Breakthrough Alliance and the SDG Digital Transformation Lab. She advances innovation, sustainable development, and technology-driven social impact through global partnerships."
-        ]
-      },
-      {
         "name": "Prashanth Reddy",
         "role": "Senior Partner at McKinsey & Company",
         "li": "https://www.linkedin.com/in/preddy/",
@@ -174,6 +165,15 @@ const BOARD = [
         "bio": [
           "Prashanth Reddy is a Senior Partner at McKinsey & Company based in New Jersey, where he has spent nearly 20 years serving private equity firms, health insurers, health services companies, pharma services organizations, providers, and technology clients. His work spans growth strategy, investing, performance, operations transformation, and healthcare value creation.",
           "He holds a Master's in Finance from London Business School, where he graduated in the top 10% of his class as a Merrill Lynch Foundation Scholar, an MBA from the Indian Institute of Management, Ahmedabad, and a B.S. in Computer Engineering from the National Institute of Technology, Surathkal. He serves on the Board of Trustees of The Pingry School in Basking Ridge, New Jersey. Outside of client work, Prashanth is actively involved in mentoring and developing colleagues and future leaders across the firm."
+        ]
+      },
+      {
+        "name": "Radhika Shah",
+        "role": "Co-Founder and Co-President, Stanford Alumni Alliance on Innovation for Global Impact · Founding Co-Chair, United Nations Joint SDG Fund Breakthrough Alliance for Climate",
+        "li": "https://www.linkedin.com/in/radhikashah1/",
+        "slug": "radhika-shah",
+        "bio": [
+          "Radhika Shah is a technology and impact investor, entrepreneur, and ecosystem builder. She has served as Co-President of Stanford Angels & Entrepreneurs and is Co-Founder and Co-President of the Stanford Alumni Alliance on Innovation for Global Impact. She is also the Founding Co-Chair of the UN Joint SDG Fund Breakthrough Alliance and the SDG Digital Transformation Lab. She advances innovation, sustainable development, and technology-driven social impact through global partnerships."
         ]
       }
     ]

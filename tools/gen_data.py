@@ -81,6 +81,10 @@ BOARD = [
    ]},
 ]
 
+# Board members are listed alphabetically by name.
+for _g in BOARD:
+    _g["people"].sort(key=lambda pp: pp["name"].lower())
+
 map_states = [{"name": s["name"], "d": s["d"], "on": s["name"] in active} for s in m["states"]]
 slugs = ", ".join(pp["slug"] for g in BOARD for pp in g["people"])
 

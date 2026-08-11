@@ -1,6 +1,7 @@
 BOARD PHOTOS
 ============
-Drop each photo in this folder named exactly as below, all lowercase, .jpg:
+All 12 photos are in place. To replace one, overwrite the file using the
+exact name below (all lowercase, .jpg). Square crops centred on the face.
 
   rashi-mehta.jpg
   cornelius-walter.jpg
