@@ -1010,3 +1010,6 @@ p:last-child { margin-bottom: 0; }
    the space under the LinkedIn mark is the card padding and nothing more.
    Photos and names still align across the row, so the ragged base reads fine. */
 .people { align-items: start; }
+
+/* icon chip sitting above a card heading */
+.card > .ico { margin-bottom: 1rem; }
