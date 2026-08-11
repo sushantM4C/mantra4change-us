@@ -458,11 +458,21 @@
       var hit = $(".video__hit", fig);
       if (!id || !hit) return;
 
-      // use the YouTube poster frame if it is reachable; otherwise the CSS gradient stands in
-      tryPhoto("https://i.ytimg.com/vi/" + id + "/maxresdefault.jpg", function () {
-        fig.style.backgroundImage = 'url("https://i.ytimg.com/vi/' + id + '/maxresdefault.jpg")';
-        fig.classList.add("video--hasposter");
-      });
+      // Poster frame. maxresdefault only exists for videos uploaded in HD, and
+      // YouTube answers some missing sizes with a 120x90 grey placeholder rather
+      // than a 404 — so walk down the sizes and reject anything suspiciously small.
+      (function poster(sizes, n) {
+        if (n >= sizes.length) return;                     // no poster: the CSS gradient stands in
+        var url = "https://i.ytimg.com/vi/" + id + "/" + sizes[n] + ".jpg";
+        var img = new Image();
+        img.onload = function () {
+          if (img.naturalWidth < 200) { poster(sizes, n + 1); return; }
+          fig.style.backgroundImage = 'url("' + url + '")';
+          fig.classList.add("video--hasposter");
+        };
+        img.onerror = function () { poster(sizes, n + 1); };
+        img.src = url;
+      })(["maxresdefault", "sddefault", "hqdefault"], 0);
 
       hit.addEventListener("click", function () {
         var frame = document.createElement("iframe");
