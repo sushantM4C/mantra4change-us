@@ -121,10 +121,27 @@ processor, search for `every.org` across the four HTML files.
 
 ### Video
 
-The home page embeds *Mantra4Change | Our Journey* as a click-to-play facade:
-nothing loads from YouTube until a visitor presses play, which keeps the page
-light and avoids third-party cookies on arrival. Change the video by editing the
-`data-yt` attribute on the `<figure class="video">` in `index.html`.
+Six films are embedded as click-to-play facades: nothing loads from YouTube
+until a visitor presses play, which keeps pages light and avoids third-party
+cookies on arrival.
+
+| Video | Page | Placement |
+|---|---|---|
+| Our Journey | Home | Full-width, after the impact band |
+| Project Based Learning | Our Work | Programme film grid |
+| Teaching & Learning Materials | Our Work | Programme film grid |
+| District Empowerment Programme | Our Work | Programme film grid |
+| PACE in Punjab | Our Work | Programme film grid |
+| Mantra4Change in Karnataka | Our Work | Inside the footprint section |
+
+To swap one, edit the `data-yt` attribute on its `<figure class="video">`.
+
+### Photo captions
+
+Captions use a fixed vocabulary so they describe the work rather than the
+subject: Peer Learning Circles, Innovative Pedagogy, Holistic Development,
+Parents' Involvement, Foundational Literacy, Reading Corner At Home,
+Micro-Improvements, Systemic Transformation, Capacity Building.
 
 ### Photography
 

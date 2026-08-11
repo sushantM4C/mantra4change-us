@@ -448,8 +448,8 @@ p:last-child { margin-bottom: 0; }
   padding: .5rem .75rem; border-radius: 8px; min-width: 62px; text-align: center;
   background: var(--accent-soft, var(--wash-2)); color: var(--ink);
 }
-.prog__name { font-family: var(--display); font-weight: 700; color: var(--ink); font-size: 1.05rem; letter-spacing: -.01em; }
-.prog__desc { font-size: .925rem; color: var(--muted); margin: .2rem 0 0; }
+.prog__name { display: block; font-family: var(--display); font-weight: 700; color: var(--ink); font-size: 1.05rem; letter-spacing: -.01em; }
+.prog__desc { display: block; font-size: .925rem; color: var(--muted); margin: .2rem 0 0; }
 .prog__go { color: var(--sky-deep); font-size: 1.2rem; flex: none; }
 @media (max-width: 620px) { .prog { grid-template-columns: auto 1fr; } .prog__go { display: none; } }
 
@@ -639,8 +639,8 @@ p:last-child { margin-bottom: 0; }
 }
 .floatcard--br { right: -8px; bottom: -22px; }
 .floatcard--tl { left: -42px; top: 5%; }
-.floatcard__n { font-family: var(--display); font-weight: 800; font-size: 1.5rem; letter-spacing: -.03em; color: var(--navy); line-height: 1; }
-.floatcard__l { font-size: .78rem; color: var(--muted); margin-top: .2rem; }
+.floatcard__n { display: block; font-family: var(--display); font-weight: 800; font-size: 1.5rem; letter-spacing: -.03em; color: var(--navy); line-height: 1; }
+.floatcard__l { display: block; font-size: .78rem; color: var(--muted); margin-top: .2rem; }
 .floatcard__icon { width: 38px; height: 38px; border-radius: 11px; display: grid; place-items: center; background: var(--accent-soft, rgba(0,177,255,.12)); color: var(--navy); flex: none; }
 .floatcard__icon svg { width: 19px; height: 19px; }
 @media (max-width: 620px) {
@@ -1049,3 +1049,16 @@ p:last-child { margin-bottom: 0; }
 .photoduo { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1rem, 2vw, 1.5rem); }
 @media (max-width: 700px) { .photoduo { grid-template-columns: 1fr; } }
 .photoduo .photo img { aspect-ratio: 4/3; }
+
+/* ---------- video grid: several films side by side ---------- */
+.videogrid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: clamp(1rem, 2.2vw, 1.75rem); }
+@media (max-width: 720px) { .videogrid { grid-template-columns: 1fr; } }
+
+.video--sm { aspect-ratio: 16/9; border-radius: var(--r); box-shadow: var(--shadow-lg); }
+.video--sm .video__play { width: clamp(48px, 5vw, 62px); }
+.video--sm .video__label { font-size: .95rem; }
+.videocap {
+  display: block; margin-top: .75rem;
+  font-family: var(--display); font-weight: 700; font-size: .95rem; color: var(--ink);
+}
+.videocap small { display: block; font-family: var(--text); font-weight: 400; font-size: .85rem; color: var(--muted); margin-top: .15rem; }
