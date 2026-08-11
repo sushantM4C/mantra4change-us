@@ -156,6 +156,15 @@ Board photos are square crops centred on the face, generated with
 `tools/crop_faces.py`. Any member without a file falls back to their initials,
 so photos can be added or replaced one at a time with no code change.
 
+### Board bios
+
+Bios are transcribed verbatim from the Mantra4Change US site and live in
+`tools/gen_data.py`. They are held to a narrow length band (roughly 270-410
+characters) so that every card in a row ends on the same line. Where an original
+bio ran longer, whole trailing sentences were dropped - no wording inside a
+retained sentence was altered. If you edit one, keep it inside that band or the
+row it sits in will grow to match it.
+
 ### The footprint map
 
 `tools/build_map.py` dissolves public district boundaries into state outlines, simplifies

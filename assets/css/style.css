@@ -1062,3 +1062,38 @@ p:last-child { margin-bottom: 0; }
   font-family: var(--display); font-weight: 700; font-size: .95rem; color: var(--ink);
 }
 .videocap small { display: block; font-family: var(--text); font-weight: 400; font-size: .85rem; color: var(--muted); margin-top: .15rem; }
+
+
+/* ==========================================================================
+   BOARD CARDS v2 — full bio on the card, every box the same size
+   Bios are held to a narrow length band in tools/gen_data.py, and the card is a
+   flex column with the bio flexing, so the LinkedIn mark pins to the bottom and
+   every card in a row ends on exactly the same line.
+   ========================================================================== */
+.people {
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  align-items: stretch;                 /* overrides the earlier `start` */
+  gap: clamp(1.1rem, 2vw, 1.6rem);
+}
+@media (max-width: 1080px) { .people { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+@media (max-width: 660px)  { .people { grid-template-columns: 1fr; } }
+
+.pcard {
+  height: 100%;
+  display: flex; flex-direction: column;
+  padding: .75rem .75rem 1.1rem;
+}
+.pcard:hover { transform: none; box-shadow: var(--shadow); border-color: var(--line); }
+
+.pcard__frame { margin-bottom: 1.1rem; }
+.pcard__body { flex: 1; display: flex; flex-direction: column; padding-inline: .6rem; }
+.pcard__name { font-size: 1.075rem; margin: 0 0 .15rem; }
+.pcard__role {
+  font-family: var(--display); font-weight: 700; font-size: .875rem;
+  color: var(--sky-deep); margin: 0 0 .8rem;
+}
+.pcard__bio {
+  flex: 1;                              /* absorbs the slack, pinning the foot */
+  margin: 0; font-size: .9rem; line-height: 1.6; color: var(--body);
+}
+.pcard__foot { margin-top: 1rem; }

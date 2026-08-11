@@ -36,54 +36,50 @@ def slug(name):
         out = out.replace("--", "-")
     return out
 
-def p(name, role, li, bio=None):
-    return {"name": name, "role": role, "li": li, "slug": slug(name), "bio": bio or []}
+def p(name, role, li, bio, photo=None):
+    return {"name": name, "role": role, "li": li,
+            "slug": photo or slug(name), "bio": bio}
 
-RASHI = [
-  "Rashi Mehta is a global entrepreneur, executive coach, and philanthropy leader whose work brings together business, leadership, and social impact.",
-  "As Co-Founder of Rahi Systems, Rashi helped build a bootstrapped Silicon Valley startup into a global technology company operating in more than 25 countries before its successful acquisition by Wesco, a Fortune 200 company. Without external funding, she led the company's financial strategy and operations through every stage of growth, helping transform an entrepreneurial vision into a thriving international enterprise. Reflecting on that journey, she often says, \u201cBuilding something from the ground up teaches you that resilience, discipline, and people matter far more than resources.\u201d",
-  "Passionate about helping others unlock their potential, Rashi studied Executive Coaching at UC Berkeley and has coached CEOs, CFOs, and senior leaders across industries. She believes that leadership is not defined by position or title, but by the ability to inspire and serve others. \u201cThe best leaders never stop learning, and they never stop lifting others as they rise,\u201d she says.",
-  "Rashi serves on the Board of the Make-A-Wish Foundation Greater Bay Area, supporting its mission to bring hope and joy to children facing critical illnesses.",
-  "In 2024, she founded the Iron Lady Foundation in memory of her mother, Dr. Leela Mehta, a pioneering gynecologist whose life of compassion, courage, and service inspired generations. Guided by the belief that every woman and child deserves dignity, opportunity, and the chance to thrive, the Foundation works across education, healthcare, clean water, sanitation, and women's economic empowerment.",
-  "For Rashi, philanthropy is deeply personal. \u201cReal change happens when communities are empowered to shape their own future,\u201d she says. Through community-led initiatives, the Iron Lady Foundation is helping create opportunities that strengthen families and spark lasting generational change.",
-  "At the heart of everything Rashi does is a belief she learned from the women who shaped her life: \u201cWhen you empower one woman, you don't just change her life\u2014you change the lives of everyone she touches.\u201d",
-]
-
-RADHIKA = [
-  "Radhika Shah is a technology and impact investor, entrepreneur, and ecosystem builder. She has served as Co-President of Stanford Angels & Entrepreneurs and is Co-Founder and Co-President of the Stanford Alumni Alliance on Innovation for Global Impact. She is also the Founding Co-Chair of the UN Joint SDG Fund Breakthrough Alliance and the SDG Digital Transformation Lab. She advances innovation, sustainable development, and technology-driven social impact through global partnerships.",
-]
-
-PRASHANTH = [
-  "Prashanth Reddy is a Senior Partner at McKinsey & Company based in New Jersey, where he has spent nearly 20 years serving private equity firms, health insurers, health services companies, pharma services organizations, providers, and technology clients. His work spans growth strategy, investing, performance, operations transformation, and healthcare value creation.",
-  "He holds a Master's in Finance from London Business School, where he graduated in the top 10% of his class as a Merrill Lynch Foundation Scholar, an MBA from the Indian Institute of Management, Ahmedabad, and a B.S. in Computer Engineering from the National Institute of Technology, Surathkal. He serves on the Board of Trustees of The Pingry School in Basking Ridge, New Jersey. Outside of client work, Prashanth is actively involved in mentoring and developing colleagues and future leaders across the firm.",
-]
-
+# Bios transcribed verbatim from the Mantra4Change US site. Where a bio was too
+# long for the card to sit level with its neighbours, whole trailing sentences
+# were dropped - no wording inside a retained sentence has been altered.
 BOARD = [
   {"title": "Board of Directors",
-   "blurb": "Ten leaders across technology, consulting, investment, real estate and education, guiding the strategy and stewardship of the US entity.",
    "people": [
-     p("Rashi Mehta", "Founder & Chair, Iron Lady Foundation", "https://www.linkedin.com/in/raashi/", RASHI),
-     p("Cornelius Walter", "Deputy Head, Administration of the Princely Assets Liechtenstein", "https://www.linkedin.com/in/cornelius-walter/"),
-     p("Pradeep Nair", "Principal & Strategic Advisor, Flat Cosmos", "https://www.linkedin.com/in/pdnair/"),
-     p("Ambili Sukesan", "Global Real Estate Investment Advisor, Realogics Sotheby's International Realty", "https://www.linkedin.com/in/amilrealty/"),
-     p("Charag Krishnan", "Partner at McKinsey & Company", "https://www.linkedin.com/in/charagk/"),
-     p("Esther Wojcicki", "Founder of ParentingTRICK App and Treehub by AI Health Fund", "https://www.linkedin.com/in/estherwojcicki/"),
-     p("Rajiv Murali", "Managing Director and Partner, Boston Consulting Group (BCG)", "https://www.linkedin.com/in/rajivmurali/"),
-     p("Kirti Reddy", "Founder and Managing Partner at Cedar Ridge Ventures", "https://www.linkedin.com/in/kirti-reddy-6800b01b6/"),
-     p("Vivek Ragavan", "Board Director", "https://www.linkedin.com/in/vivek-ragavan-0b974/"),
-     p("Aditya Vishwanath", "Co-Founder and Board Director, MakerGhat", "https://www.linkedin.com/in/adityavishwanath/"),
+     p("Dr. Aditya Vishwanath", "Trustee", "https://www.linkedin.com/in/adityavishwanath/",
+       "Dr. Aditya Vishwanath is an education technology researcher and entrepreneur whose work bridges learning, design, and technology. As Co-founder and CEO of Inspirit and Co-founder of MakerGhat, his efforts have focused on making digital learning more engaging and accessible across diverse contexts.",
+       photo="aditya-vishwanath"),
+     p("Ambili Sukesan", "Treasurer", "https://www.linkedin.com/in/amilrealty/",
+       "Supporting M4C-USA with all the legal compliances, Ambili is highly accomplished in the real estate sector with exemplary customer experience in the USA, Europe and Asia. With strong communication, problem-solving and negotiation acumen, and through deep market and financial analyses, Ambili provides exemplary real estate advisory services."),
+     p("Charag Krishnan", "Trustee", "https://www.linkedin.com/in/charagk/",
+       "Partner in Mckinsey\u2019s education work, Charag helps higher education institutions change their trajectory through holistic performance transformations and M&A. Expertise include strategies for improving enrolment, student success and retention, online learning, auxiliary revenues, and organizational capability building."),
+     p("Cornelius Walter", "President", "https://www.linkedin.com/in/cornelius-walter/",
+       "A former senior partner at Mckinsey & Company where Cornelius advised on a broad range of growth strategies and large-scale transformations. Currently, a strategic partner at Lightrock, a leading global impact investing platform, Cornelius invests and serves on the boards of start-ups and later-stage companies with environmental, social, and governance (ESG) goals and sustainable business models."),
+     p("Esther Wojcicki", "Trustee", "https://www.linkedin.com/in/estherwojcicki/",
+       "Esther Denise \u201cWoj\u201d Hochman Wojcicki is an American journalist, educator, and vice chair of the Creative Commons Advisory Council. Wojcicki has studied education and technology. She is the founder of the Palo Alto High School Media Arts Program in Palo Alto, California."),
+     p("Kirti Reddy", "Trustee", "https://www.linkedin.com/in/kirti-reddy-6800b01b6/",
+       "An alumna of the London School of Economics, Kirti brings a wealth of experience and leadership as Founder and Managing Partner of Cedar Ridge Ventures. With a background in investment banking at Deutsche Bank and UBS, Kirti\u2019s expertise will undoubtedly contribute to our mission."),
+     p("Pradeep Nair", "Trustee", "https://www.linkedin.com/in/pdnair/",
+       "Former Regional Director (India) for Ford Foundation, Pradeep has over 25 years of global experience, in technology, management consulting, and investing/funding. Starting in Silicon Valley as a big five management consultant, building software application products, Pradeep was part of an advisory start-up led by President Clinton and Mayor Bloomberg."),
+     p("Rajiv Murali", "Trustee", "https://www.linkedin.com/in/rajivmurali/",
+       "He is a core member of the Energy practice with extensive experience in digital initiatives across heavy industry companies, including exploration, development, operations, supply chain, digital transformations, and decarbonization/carbon accounting at BCG. He is currently focused on helping clients use data analytics and AI for better decision-making, safety, and workforce efficiency."),
+     p("Rashi Mehta", "Trustee", "https://www.linkedin.com/in/raashi/",
+       "A global entrepreneur, executive coach, and philanthropy leader, Rashi Mehta co-founded Rahi Systems, helping grow the bootstrapped Silicon Valley startup into a global technology company operating in more than 25 countries before its acquisition by Wesco, a Fortune 200 company. An executive coach trained at UC Berkeley, she has coached CEOs and senior leaders across industries."),
+     p("Vivek Ragavan", "Trustee", "https://www.linkedin.com/in/vivek-ragavan-0b974/",
+       "Vivek Ragavan brings over three decades of leadership experience in the telecommunications and technology sectors. A seasoned entrepreneur, he has served as President and CEO of several leading companies and continues to contribute to education and innovation through his roles with the Akanksha Fund, the Motivation for Excellence Initiative, and Northwestern University\u2019s McCormick School of Engineering."),
    ]},
   {"title": "Board of Advisors",
-   "blurb": "Advisors bringing deep experience in global innovation, sustainable development and healthcare strategy.",
    "people": [
-     p("Radhika Shah", "Co-Founder and Co-President, Stanford Alumni Alliance on Innovation for Global Impact \u00b7 Founding Co-Chair, United Nations Joint SDG Fund Breakthrough Alliance for Climate", "https://www.linkedin.com/in/radhikashah1/", RADHIKA),
-     p("Prashanth Reddy", "Senior Partner at McKinsey & Company", "https://www.linkedin.com/in/preddy/", PRASHANTH),
+     p("Prashanth Reddy", "Advisor", "https://www.linkedin.com/in/preddy/",
+       "Prashanth Reddy is a Senior Partner at McKinsey & Company based in New Jersey, where he has spent nearly 20 years serving private equity firms, health insurers, health services companies, pharma services organizations, providers, and technology clients. His work spans growth strategy, investing, performance, operations transformation, and healthcare value creation."),
+     p("Radhika Shah", "Advisor", "https://www.linkedin.com/in/radhikashah1/",
+       "Radhika Shah is a technology and impact investor, entrepreneur, and ecosystem builder. She has served as Co-President of Stanford Angels & Entrepreneurs and is Co-Founder and Co-President of the Stanford Alumni Alliance on Innovation for Global Impact. She is also the Founding Co-Chair of the UN Joint SDG Fund Breakthrough Alliance and the SDG Digital Transformation Lab."),
    ]},
 ]
 
-# Board members are listed alphabetically by name.
+# alphabetical within each group
 for _g in BOARD:
-    _g["people"].sort(key=lambda pp: pp["name"].lower())
+    _g["people"].sort(key=lambda pp: pp["name"].replace("Dr. ", "").lower())
 
 map_states = [{"name": s["name"], "d": s["d"], "on": s["name"] in active} for s in m["states"]]
 slugs = ", ".join(pp["slug"] for g in BOARD for pp in g["people"])
@@ -120,4 +116,4 @@ print("data.js written:", len(js), "bytes")
 for g in BOARD:
     print(" ", g["title"])
     for pp in g["people"]:
-        print("   %-22s bio paras: %d" % (pp["slug"], len(pp["bio"])))
+        print("   %-22s %-10s %4d chars" % (pp["slug"], pp["role"], len(pp["bio"])))

@@ -300,28 +300,26 @@
 
   function photoPath(slug) { return "assets/img/board/" + slug + ".jpg"; }
 
-  function personCard(person, i) {
-    var hasBio = Array.isArray(person.bio) && person.bio.length;
-    var card = document.createElement("div");
-    card.className = "pcard " + ACCENT_CYCLE[i % ACCENT_CYCLE.length];
+  function personCard(person) {
+    var card = document.createElement("article");
+    card.className = "pcard";
 
     card.innerHTML =
       '<div class="pcard__frame">' +
         '<div class="pcard__initials">' + initials(person.name) + "</div>" +
       "</div>" +
       '<div class="pcard__body">' +
-        '<div class="pcard__name">' + person.name + "</div>" +
-        '<div class="pcard__role">' + person.role + "</div>" +
+        '<h3 class="pcard__name">' + person.name + "</h3>" +
+        '<p class="pcard__role">' + person.role + "</p>" +
+        '<p class="pcard__bio">' + person.bio + "</p>" +
         '<div class="pcard__foot">' +
           (person.li
             ? '<a class="pcard__li" href="' + person.li + '" target="_blank" rel="noopener" aria-label="' +
               person.name + ' on LinkedIn">' + LI_ICON + "</a>"
             : "") +
-
         "</div>" +
       "</div>";
 
-    // swap in the photo if the file exists
     var frame = $(".pcard__frame", card);
     tryPhoto(photoPath(person.slug), function () {
       var el = document.createElement("img");
@@ -332,59 +330,13 @@
       frame.insertBefore(el, frame.firstChild);
       $(".pcard__initials", frame).style.display = "none";
     });
-
-    // A whole-card hit area for the bio, sitting under the LinkedIn link so both
-    // stay clickable and we avoid nesting a button inside a button.
-    if (hasBio) {
-      card.classList.add("pcard--clickable");
-      var hit = document.createElement("button");
-      hit.type = "button";
-      hit.className = "pcard__hit";
-      hit.setAttribute("aria-label", "Read the full bio of " + person.name);
-      hit.addEventListener("click", function () { openBio(person); });
-      card.appendChild(hit);
-    }
     return card;
-  }
-
-  var lastFocused = null;
-
-  function openBio(person) {
-    var modal = $("#bio-modal");
-    if (!modal) return;
-    lastFocused = document.activeElement;
-
-    $("#bio-name").textContent = person.name;
-    $("#bio-role").textContent = person.role;
-    $("#bio-text").innerHTML = person.bio.map(function (t) { return "<p>" + t + "</p>"; }).join("");
-
-    var frame = $("#bio-frame");
-    frame.innerHTML = '<div class="biohead__initials">' + initials(person.name) + "</div>";
-    tryPhoto(photoPath(person.slug), function () {
-      frame.innerHTML = '<img src="' + photoPath(person.slug) + '" alt="' + person.name + '">';
-    });
-
-    var link = $("#bio-link");
-    if (person.li) { link.href = person.li; link.hidden = false; } else { link.hidden = true; }
-
-    modal.hidden = false;
-    document.body.style.overflow = "hidden";
-    $(".modal__close", modal).focus();
-  }
-
-  function closeBio() {
-    var modal = $("#bio-modal");
-    if (!modal || modal.hidden) return;
-    modal.hidden = true;
-    document.body.style.overflow = "";
-    if (lastFocused) lastFocused.focus();
   }
 
   function initBoard() {
     var host = $("[data-board]");
     if (!host || typeof BOARD === "undefined") return;
 
-    var n = 0;
     BOARD.forEach(function (group) {
       var head = document.createElement("div");
       head.className = "grouphead";
@@ -394,15 +346,9 @@
       var grid = document.createElement("div");
       grid.className = "people";
       grid.style.marginBottom = "3.5rem";
-      group.people.forEach(function (person) { grid.appendChild(personCard(person, n++)); });
+      group.people.forEach(function (person) { grid.appendChild(personCard(person)); });
       host.appendChild(grid);
     });
-
-    var modal = $("#bio-modal");
-    if (!modal) return;
-    $(".modal__close", modal).addEventListener("click", closeBio);
-    modal.addEventListener("click", function (e) { if (e.target === modal) closeBio(); });
-    document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeBio(); });
   }
 
   /* ----------------------------------------------------------- carousel */

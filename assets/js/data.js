@@ -71,110 +71,95 @@ const STATE_DATA = [
 const BOARD = [
   {
     "title": "Board of Directors",
-    "blurb": "Ten leaders across technology, consulting, investment, real estate and education, guiding the strategy and stewardship of the US entity.",
     "people": [
       {
-        "name": "Aditya Vishwanath",
-        "role": "Co-Founder and Board Director, MakerGhat",
+        "name": "Dr. Aditya Vishwanath",
+        "role": "Trustee",
         "li": "https://www.linkedin.com/in/adityavishwanath/",
         "slug": "aditya-vishwanath",
-        "bio": []
+        "bio": "Dr. Aditya Vishwanath is an education technology researcher and entrepreneur whose work bridges learning, design, and technology. As Co-founder and CEO of Inspirit and Co-founder of MakerGhat, his efforts have focused on making digital learning more engaging and accessible across diverse contexts."
       },
       {
         "name": "Ambili Sukesan",
-        "role": "Global Real Estate Investment Advisor, Realogics Sotheby's International Realty",
+        "role": "Treasurer",
         "li": "https://www.linkedin.com/in/amilrealty/",
         "slug": "ambili-sukesan",
-        "bio": []
+        "bio": "Supporting M4C-USA with all the legal compliances, Ambili is highly accomplished in the real estate sector with exemplary customer experience in the USA, Europe and Asia. With strong communication, problem-solving and negotiation acumen, and through deep market and financial analyses, Ambili provides exemplary real estate advisory services."
       },
       {
         "name": "Charag Krishnan",
-        "role": "Partner at McKinsey & Company",
+        "role": "Trustee",
         "li": "https://www.linkedin.com/in/charagk/",
         "slug": "charag-krishnan",
-        "bio": []
+        "bio": "Partner in Mckinsey’s education work, Charag helps higher education institutions change their trajectory through holistic performance transformations and M&A. Expertise include strategies for improving enrolment, student success and retention, online learning, auxiliary revenues, and organizational capability building."
       },
       {
         "name": "Cornelius Walter",
-        "role": "Deputy Head, Administration of the Princely Assets Liechtenstein",
+        "role": "President",
         "li": "https://www.linkedin.com/in/cornelius-walter/",
         "slug": "cornelius-walter",
-        "bio": []
+        "bio": "A former senior partner at Mckinsey & Company where Cornelius advised on a broad range of growth strategies and large-scale transformations. Currently, a strategic partner at Lightrock, a leading global impact investing platform, Cornelius invests and serves on the boards of start-ups and later-stage companies with environmental, social, and governance (ESG) goals and sustainable business models."
       },
       {
         "name": "Esther Wojcicki",
-        "role": "Founder of ParentingTRICK App and Treehub by AI Health Fund",
+        "role": "Trustee",
         "li": "https://www.linkedin.com/in/estherwojcicki/",
         "slug": "esther-wojcicki",
-        "bio": []
+        "bio": "Esther Denise “Woj” Hochman Wojcicki is an American journalist, educator, and vice chair of the Creative Commons Advisory Council. Wojcicki has studied education and technology. She is the founder of the Palo Alto High School Media Arts Program in Palo Alto, California."
       },
       {
         "name": "Kirti Reddy",
-        "role": "Founder and Managing Partner at Cedar Ridge Ventures",
+        "role": "Trustee",
         "li": "https://www.linkedin.com/in/kirti-reddy-6800b01b6/",
         "slug": "kirti-reddy",
-        "bio": []
+        "bio": "An alumna of the London School of Economics, Kirti brings a wealth of experience and leadership as Founder and Managing Partner of Cedar Ridge Ventures. With a background in investment banking at Deutsche Bank and UBS, Kirti’s expertise will undoubtedly contribute to our mission."
       },
       {
         "name": "Pradeep Nair",
-        "role": "Principal & Strategic Advisor, Flat Cosmos",
+        "role": "Trustee",
         "li": "https://www.linkedin.com/in/pdnair/",
         "slug": "pradeep-nair",
-        "bio": []
+        "bio": "Former Regional Director (India) for Ford Foundation, Pradeep has over 25 years of global experience, in technology, management consulting, and investing/funding. Starting in Silicon Valley as a big five management consultant, building software application products, Pradeep was part of an advisory start-up led by President Clinton and Mayor Bloomberg."
       },
       {
         "name": "Rajiv Murali",
-        "role": "Managing Director and Partner, Boston Consulting Group (BCG)",
+        "role": "Trustee",
         "li": "https://www.linkedin.com/in/rajivmurali/",
         "slug": "rajiv-murali",
-        "bio": []
+        "bio": "He is a core member of the Energy practice with extensive experience in digital initiatives across heavy industry companies, including exploration, development, operations, supply chain, digital transformations, and decarbonization/carbon accounting at BCG. He is currently focused on helping clients use data analytics and AI for better decision-making, safety, and workforce efficiency."
       },
       {
         "name": "Rashi Mehta",
-        "role": "Founder & Chair, Iron Lady Foundation",
+        "role": "Trustee",
         "li": "https://www.linkedin.com/in/raashi/",
         "slug": "rashi-mehta",
-        "bio": [
-          "Rashi Mehta is a global entrepreneur, executive coach, and philanthropy leader whose work brings together business, leadership, and social impact.",
-          "As Co-Founder of Rahi Systems, Rashi helped build a bootstrapped Silicon Valley startup into a global technology company operating in more than 25 countries before its successful acquisition by Wesco, a Fortune 200 company. Without external funding, she led the company's financial strategy and operations through every stage of growth, helping transform an entrepreneurial vision into a thriving international enterprise. Reflecting on that journey, she often says, “Building something from the ground up teaches you that resilience, discipline, and people matter far more than resources.”",
-          "Passionate about helping others unlock their potential, Rashi studied Executive Coaching at UC Berkeley and has coached CEOs, CFOs, and senior leaders across industries. She believes that leadership is not defined by position or title, but by the ability to inspire and serve others. “The best leaders never stop learning, and they never stop lifting others as they rise,” she says.",
-          "Rashi serves on the Board of the Make-A-Wish Foundation Greater Bay Area, supporting its mission to bring hope and joy to children facing critical illnesses.",
-          "In 2024, she founded the Iron Lady Foundation in memory of her mother, Dr. Leela Mehta, a pioneering gynecologist whose life of compassion, courage, and service inspired generations. Guided by the belief that every woman and child deserves dignity, opportunity, and the chance to thrive, the Foundation works across education, healthcare, clean water, sanitation, and women's economic empowerment.",
-          "For Rashi, philanthropy is deeply personal. “Real change happens when communities are empowered to shape their own future,” she says. Through community-led initiatives, the Iron Lady Foundation is helping create opportunities that strengthen families and spark lasting generational change.",
-          "At the heart of everything Rashi does is a belief she learned from the women who shaped her life: “When you empower one woman, you don't just change her life—you change the lives of everyone she touches.”"
-        ]
+        "bio": "A global entrepreneur, executive coach, and philanthropy leader, Rashi Mehta co-founded Rahi Systems, helping grow the bootstrapped Silicon Valley startup into a global technology company operating in more than 25 countries before its acquisition by Wesco, a Fortune 200 company. An executive coach trained at UC Berkeley, she has coached CEOs and senior leaders across industries."
       },
       {
         "name": "Vivek Ragavan",
-        "role": "Board Director",
+        "role": "Trustee",
         "li": "https://www.linkedin.com/in/vivek-ragavan-0b974/",
         "slug": "vivek-ragavan",
-        "bio": []
+        "bio": "Vivek Ragavan brings over three decades of leadership experience in the telecommunications and technology sectors. A seasoned entrepreneur, he has served as President and CEO of several leading companies and continues to contribute to education and innovation through his roles with the Akanksha Fund, the Motivation for Excellence Initiative, and Northwestern University’s McCormick School of Engineering."
       }
     ]
   },
   {
     "title": "Board of Advisors",
-    "blurb": "Advisors bringing deep experience in global innovation, sustainable development and healthcare strategy.",
     "people": [
       {
         "name": "Prashanth Reddy",
-        "role": "Senior Partner at McKinsey & Company",
+        "role": "Advisor",
         "li": "https://www.linkedin.com/in/preddy/",
         "slug": "prashanth-reddy",
-        "bio": [
-          "Prashanth Reddy is a Senior Partner at McKinsey & Company based in New Jersey, where he has spent nearly 20 years serving private equity firms, health insurers, health services companies, pharma services organizations, providers, and technology clients. His work spans growth strategy, investing, performance, operations transformation, and healthcare value creation.",
-          "He holds a Master's in Finance from London Business School, where he graduated in the top 10% of his class as a Merrill Lynch Foundation Scholar, an MBA from the Indian Institute of Management, Ahmedabad, and a B.S. in Computer Engineering from the National Institute of Technology, Surathkal. He serves on the Board of Trustees of The Pingry School in Basking Ridge, New Jersey. Outside of client work, Prashanth is actively involved in mentoring and developing colleagues and future leaders across the firm."
-        ]
+        "bio": "Prashanth Reddy is a Senior Partner at McKinsey & Company based in New Jersey, where he has spent nearly 20 years serving private equity firms, health insurers, health services companies, pharma services organizations, providers, and technology clients. His work spans growth strategy, investing, performance, operations transformation, and healthcare value creation."
       },
       {
         "name": "Radhika Shah",
-        "role": "Co-Founder and Co-President, Stanford Alumni Alliance on Innovation for Global Impact · Founding Co-Chair, United Nations Joint SDG Fund Breakthrough Alliance for Climate",
+        "role": "Advisor",
         "li": "https://www.linkedin.com/in/radhikashah1/",
         "slug": "radhika-shah",
-        "bio": [
-          "Radhika Shah is a technology and impact investor, entrepreneur, and ecosystem builder. She has served as Co-President of Stanford Angels & Entrepreneurs and is Co-Founder and Co-President of the Stanford Alumni Alliance on Innovation for Global Impact. She is also the Founding Co-Chair of the UN Joint SDG Fund Breakthrough Alliance and the SDG Digital Transformation Lab. She advances innovation, sustainable development, and technology-driven social impact through global partnerships."
-        ]
+        "bio": "Radhika Shah is a technology and impact investor, entrepreneur, and ecosystem builder. She has served as Co-President of Stanford Angels & Entrepreneurs and is Co-Founder and Co-President of the Stanford Alumni Alliance on Innovation for Global Impact. She is also the Founding Co-Chair of the UN Joint SDG Fund Breakthrough Alliance and the SDG Digital Transformation Lab."
       }
     ]
   }
