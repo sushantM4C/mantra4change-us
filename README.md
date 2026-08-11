@@ -94,6 +94,21 @@ link, change it in all four files.
 Per the brandbook, a primary blue appears on every page; secondaries are accents only.
 Type is **Figtree** for display and **Inter** for body, loaded from Google Fonts.
 
+### Icons
+
+The icon set is extracted from the Future Readiness design pack — hand-drawn line
+icons in the Mantra style, rather than generic stroke glyphs. They live in
+`assets/img/icons/` in navy and white, at 128px. `tools/extract_icons.py` splits
+the clustered artwork into individual icons and `tools/build_icons.py` recolours
+and pads them. To add one, drop the source cluster in and rerun both.
+
+### Video
+
+The home page embeds *Mantra4Change | Our Journey* as a click-to-play facade:
+nothing loads from YouTube until a visitor presses play, which keeps the page
+light and avoids third-party cookies on arrival. Change the video by editing the
+`data-yt` attribute on the `<figure class="video">` in `index.html`.
+
 ### Photography
 
 | File | Where it appears |

@@ -317,7 +317,7 @@
             ? '<a class="pcard__li" href="' + person.li + '" target="_blank" rel="noopener" aria-label="' +
               person.name + ' on LinkedIn">' + LI_ICON + "</a>"
             : "") +
-          (hasBio ? '<span class="pcard__read">Read full bio &rarr;</span>' : "") +
+
         "</div>" +
       "</div>";
 
@@ -388,12 +388,7 @@
     BOARD.forEach(function (group) {
       var head = document.createElement("div");
       head.className = "grouphead";
-      head.innerHTML =
-        '<div class="grouphead__row">' +
-          '<span class="grouphead__count">' + group.people.length + "</span>" +
-          '<h2 class="t-h3" style="margin:0">' + group.title + "</h2>" +
-        "</div>" +
-        (group.blurb ? "<p>" + group.blurb + "</p>" : "");
+      head.innerHTML = '<h2 class="t-h3" style="margin:0">' + group.title + "</h2>";
       host.appendChild(head);
 
       var grid = document.createElement("div");
@@ -408,6 +403,35 @@
     $(".modal__close", modal).addEventListener("click", closeBio);
     modal.addEventListener("click", function (e) { if (e.target === modal) closeBio(); });
     document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeBio(); });
+  }
+
+  /* -------------------------------------------------------------- video */
+  /* Click-to-play facade: no YouTube script loads until the visitor asks for
+     it, which keeps the page light and avoids third-party cookies on arrival. */
+  function initVideo() {
+    $$("[data-yt]").forEach(function (fig) {
+      var id = fig.getAttribute("data-yt");
+      var hit = $(".video__hit", fig);
+      if (!id || !hit) return;
+
+      // use the YouTube poster frame if it is reachable; otherwise the CSS gradient stands in
+      tryPhoto("https://i.ytimg.com/vi/" + id + "/maxresdefault.jpg", function () {
+        fig.style.backgroundImage = 'url("https://i.ytimg.com/vi/' + id + '/maxresdefault.jpg")';
+        fig.classList.add("video--hasposter");
+      });
+
+      hit.addEventListener("click", function () {
+        var frame = document.createElement("iframe");
+        frame.src = "https://www.youtube-nocookie.com/embed/" + id + "?autoplay=1&rel=0&modestbranding=1";
+        frame.title = fig.getAttribute("data-title") || "Video";
+        frame.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture";
+        frame.allowFullscreen = true;
+        frame.setAttribute("frameborder", "0");
+        frame.className = "video__frame";
+        fig.classList.add("video--playing");
+        hit.replaceWith(frame);
+      });
+    });
   }
 
   /* ---------------------------------------------------------------- misc */
@@ -425,6 +449,7 @@
     initCounters();
     initFaq();
     initTabs();
+    initVideo();
     initYear();
   }
 

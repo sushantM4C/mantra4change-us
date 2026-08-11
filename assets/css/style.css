@@ -485,7 +485,7 @@ p:last-child { margin-bottom: 0; }
 .footer__top { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.2fr; gap: clamp(1.75rem, 4vw, 3rem); }
 @media (max-width: 860px) { .footer__top { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 520px) { .footer__top { grid-template-columns: 1fr; } }
-.footer__h { font-family: var(--display); font-weight: 700; font-size: .8rem; letter-spacing: .14em; text-transform: uppercase; color: #fff; margin-bottom: 1rem; }
+.footer__h { font-family: var(--display); font-weight: 700; font-size: .95rem; color: #fff; margin-bottom: 1rem; }
 .footer__list { list-style: none; margin: 0; padding: 0; display: grid; gap: .6rem; }
 .footer__list a { color: rgba(255,255,255,.72); text-decoration: none; font-size: .95rem; }
 .footer__list a:hover { color: var(--sky); }
@@ -897,11 +897,9 @@ p:last-child { margin-bottom: 0; }
   max-width: 34ch; margin: 0;
 }
 .imgband__cap {
-  display: inline-flex; align-items: center; gap: .5rem; margin-top: .9rem;
-  font-size: .8rem; letter-spacing: .05em; text-transform: uppercase;
-  font-weight: 600; color: rgba(255,255,255,.7);
+  display: block; margin-top: .8rem;
+  font-size: .9rem; font-weight: 400; color: rgba(255,255,255,.72);
 }
-.imgband__cap::before { content: ""; width: 22px; height: 2px; background: var(--sky); border-radius: 2px; }
 .imgband .birds { z-index: 2; }
 
 /* photo inside a split section */
@@ -928,3 +926,87 @@ p:last-child { margin-bottom: 0; }
    `overflow-x: clip` contains them without creating a scroll container, so
    position:sticky inside these sections keeps working (overflow:hidden would break it). */
 .band { overflow-x: clip; }
+
+
+/* ==========================================================================
+   LAYER 3 — content-feedback pass
+   Removed the letterspaced kicker labels and status pills; icons now come from
+   the Future Readiness hand-drawn set rather than generic stroke glyphs.
+   ========================================================================== */
+
+/* The `.eyebrow` kicker is retired. Section headings carry their own weight,
+   so give the first heading in a block a little more room instead. */
+.eyebrow { display: none; }
+
+/* ---------- brand icons ---------- */
+.ico { background: var(--accent-soft, var(--wash-2)); box-shadow: none; }
+.ico img { width: 74%; height: 74%; object-fit: contain; display: block; }
+.ico--sm img { width: 78%; height: 78%; }
+.on-dark .ico img { filter: brightness(0) invert(1); }
+.floatcard__icon img { width: 78%; height: 78%; object-fit: contain; }
+
+/* ---------- quiet fact list, replacing the ticked trust row ---------- */
+.facts {
+  display: flex; flex-wrap: wrap; align-items: center; gap: .35rem 1rem;
+  list-style: none; margin: 2rem 0 0; padding: 0;
+  font-size: .875rem; color: var(--muted);
+}
+.facts li { display: inline-flex; align-items: center; }
+.facts li + li::before {
+  content: ""; width: 4px; height: 4px; border-radius: 50%;
+  background: var(--steel); margin-right: 1rem;
+}
+
+/* ---------- board cards: no dead space under the LinkedIn mark ---------- */
+/* The role no longer stretches, so the card hugs its content and the grid
+   rows stay even without leaving a gap beneath the icon. */
+.pcard { padding-bottom: .9rem; }
+.pcard__role { flex: 0 1 auto; }
+.pcard__foot { margin-top: .8rem; }
+.pcard--clickable .pcard__name { text-decoration: underline; text-decoration-color: transparent; text-underline-offset: 3px; transition: text-decoration-color .18s ease; }
+.pcard--clickable:hover .pcard__name { text-decoration-color: var(--sky); }
+.grouphead { margin-bottom: clamp(1.25rem, 2.5vw, 1.75rem); }
+
+/* ==========================================================================
+   VIDEO — click-to-play facade
+   ========================================================================== */
+.videolead { max-width: 56ch; margin-bottom: clamp(1.75rem, 4vw, 2.5rem); }
+
+.video {
+  position: relative; margin: 0; overflow: hidden;
+  border-radius: var(--r-lg); aspect-ratio: 16/9;
+  background: linear-gradient(135deg, var(--navy) 0%, #21386e 45%, #0f2350 100%);
+  background-size: cover; background-position: center;
+  box-shadow: var(--shadow-xl);
+}
+.video--hasposter::after {          /* keep the play control legible over the poster */
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(20,32,60,.25), rgba(20,32,60,.55));
+}
+.video--playing::after { display: none; }
+
+.video__hit {
+  position: absolute; inset: 0; z-index: 2;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem;
+  background: none; border: 0; cursor: pointer; width: 100%; color: #fff;
+}
+.video__play {
+  display: grid; place-items: center;
+  width: clamp(64px, 8vw, 88px); aspect-ratio: 1; border-radius: 50%;
+  background: var(--sky); color: #04263a;
+  box-shadow: 0 10px 30px rgba(0,177,255,.45);
+  transition: transform .22s cubic-bezier(.22,1,.36,1), box-shadow .22s ease;
+}
+.video__play svg { width: 42%; height: 42%; margin-left: 6%; }
+.video__hit:hover .video__play { transform: scale(1.08); box-shadow: 0 14px 40px rgba(0,177,255,.6); }
+.video__label {
+  font-family: var(--display); font-weight: 700; font-size: 1.05rem; color: #fff;
+  display: grid; gap: .2rem; text-shadow: 0 1px 12px rgba(0,0,0,.4);
+}
+.video__label small { font-weight: 400; font-size: .8rem; opacity: .75; }
+.video__frame { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+/* Cards hug their content rather than stretching to the tallest in the row, so
+   the space under the LinkedIn mark is the card padding and nothing more.
+   Photos and names still align across the row, so the ragged base reads fine. */
+.people { align-items: start; }
