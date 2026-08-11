@@ -263,6 +263,31 @@
     });
   }
 
+  /* ------------------------------------------------ photos with fallback */
+  /* Photos are optional. Each slot renders a designed placeholder and swaps in
+     the real image only once it has actually loaded, so a missing file never
+     shows a broken-image icon. */
+  function tryPhoto(src, onload, onfail) {
+    var img = new Image();
+    img.onload = function () { onload(img); };
+    img.onerror = onfail || function () {};
+    img.src = src;
+  }
+
+  function initFigures() {
+    $$("[data-photo]").forEach(function (fig) {
+      var src = fig.getAttribute("data-photo");
+      var slot = $(".figure__slot", fig);
+      tryPhoto(src, function () {
+        var el = document.createElement("img");
+        el.className = "figure__img";
+        el.src = src;
+        el.alt = fig.getAttribute("data-alt") || "";
+        if (slot) slot.replaceWith(el); else fig.appendChild(el);
+      });
+    });
+  }
+
   /* --------------------------------------------------------- board + bio */
   function initials(name) {
     return name.split(/\s+/).filter(Boolean).map(function (w) { return w[0]; })
@@ -273,23 +298,53 @@
 
   var ACCENT_CYCLE = ["a-navy", "a-sky", "a-green", "a-amber", "a-orange", "a-steel"];
 
+  function photoPath(slug) { return "assets/img/board/" + slug + ".jpg"; }
+
   function personCard(person, i) {
     var hasBio = Array.isArray(person.bio) && person.bio.length;
-    var el = document.createElement(hasBio ? "button" : "div");
-    el.className = "person " + ACCENT_CYCLE[i % ACCENT_CYCLE.length] + (hasBio ? " person--clickable" : "");
-    if (hasBio) { el.type = "button"; el.setAttribute("aria-haspopup", "dialog"); }
+    var card = document.createElement("div");
+    card.className = "pcard " + ACCENT_CYCLE[i % ACCENT_CYCLE.length];
 
-    el.innerHTML =
-      '<div class="person__avatar" aria-hidden="true">' + initials(person.name) + "</div>" +
-      '<div class="person__name">' + person.name + "</div>" +
-      '<div class="person__role">' + person.role + "</div>" +
-      (person.li && !hasBio
-        ? '<div class="person__links"><a href="' + person.li + '" target="_blank" rel="noopener" aria-label="' + person.name + ' on LinkedIn">' + LI_ICON + "</a></div>"
-        : "") +
-      (hasBio ? '<div class="person__more">Read bio &rarr;</div>' : "");
+    card.innerHTML =
+      '<div class="pcard__frame">' +
+        '<div class="pcard__initials">' + initials(person.name) + "</div>" +
+      "</div>" +
+      '<div class="pcard__body">' +
+        '<div class="pcard__name">' + person.name + "</div>" +
+        '<div class="pcard__role">' + person.role + "</div>" +
+        '<div class="pcard__foot">' +
+          (person.li
+            ? '<a class="pcard__li" href="' + person.li + '" target="_blank" rel="noopener" aria-label="' +
+              person.name + ' on LinkedIn">' + LI_ICON + "</a>"
+            : "") +
+          (hasBio ? '<span class="pcard__read">Read full bio &rarr;</span>' : "") +
+        "</div>" +
+      "</div>";
 
-    if (hasBio) el.addEventListener("click", function () { openBio(person); });
-    return el;
+    // swap in the photo if the file exists
+    var frame = $(".pcard__frame", card);
+    tryPhoto(photoPath(person.slug), function () {
+      var el = document.createElement("img");
+      el.className = "pcard__photo";
+      el.src = photoPath(person.slug);
+      el.alt = person.name;
+      el.loading = "lazy";
+      frame.insertBefore(el, frame.firstChild);
+      $(".pcard__initials", frame).style.display = "none";
+    });
+
+    // A whole-card hit area for the bio, sitting under the LinkedIn link so both
+    // stay clickable and we avoid nesting a button inside a button.
+    if (hasBio) {
+      card.classList.add("pcard--clickable");
+      var hit = document.createElement("button");
+      hit.type = "button";
+      hit.className = "pcard__hit";
+      hit.setAttribute("aria-label", "Read the full bio of " + person.name);
+      hit.addEventListener("click", function () { openBio(person); });
+      card.appendChild(hit);
+    }
+    return card;
   }
 
   var lastFocused = null;
@@ -301,8 +356,13 @@
 
     $("#bio-name").textContent = person.name;
     $("#bio-role").textContent = person.role;
-    $("#bio-avatar").textContent = initials(person.name);
-    $("#bio-text").innerHTML = person.bio.map(function (p) { return "<p>" + p + "</p>"; }).join("");
+    $("#bio-text").innerHTML = person.bio.map(function (t) { return "<p>" + t + "</p>"; }).join("");
+
+    var frame = $("#bio-frame");
+    frame.innerHTML = '<div class="biohead__initials">' + initials(person.name) + "</div>";
+    tryPhoto(photoPath(person.slug), function () {
+      frame.innerHTML = '<img src="' + photoPath(person.slug) + '" alt="' + person.name + '">';
+    });
 
     var link = $("#bio-link");
     if (person.li) { link.href = person.li; link.hidden = false; } else { link.hidden = true; }
@@ -324,20 +384,23 @@
     var host = $("[data-board]");
     if (!host || typeof BOARD === "undefined") return;
 
-    Object.keys(BOARD).forEach(function (key) {
-      var panel = document.getElementById("panel-" + key);
-      if (!panel) return;
-      BOARD[key].groups.forEach(function (group) {
-        var h = document.createElement("h3");
-        h.className = "t-h3 mt-3";
-        h.textContent = group.title;
-        panel.appendChild(h);
+    var n = 0;
+    BOARD.forEach(function (group) {
+      var head = document.createElement("div");
+      head.className = "grouphead";
+      head.innerHTML =
+        '<div class="grouphead__row">' +
+          '<span class="grouphead__count">' + group.people.length + "</span>" +
+          '<h2 class="t-h3" style="margin:0">' + group.title + "</h2>" +
+        "</div>" +
+        (group.blurb ? "<p>" + group.blurb + "</p>" : "");
+      host.appendChild(head);
 
-        var grid = document.createElement("div");
-        grid.className = "grid grid-4 mt-2";
-        group.people.forEach(function (p, i) { grid.appendChild(personCard(p, i)); });
-        panel.appendChild(grid);
-      });
+      var grid = document.createElement("div");
+      grid.className = "people";
+      grid.style.marginBottom = "3.5rem";
+      group.people.forEach(function (person) { grid.appendChild(personCard(person, n++)); });
+      host.appendChild(grid);
     });
 
     var modal = $("#bio-modal");
@@ -355,6 +418,7 @@
   /* ---------------------------------------------------------------- boot */
   function boot() {
     initNav();
+    initFigures();
     initBoard();     // build cards before reveal/observers attach
     initMaps();
     initReveal();

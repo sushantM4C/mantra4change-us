@@ -4,10 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mantra4Change US — Strengthening education leaders in India</title>
-<meta name="description" content="Mantra4Change US is a 501(c)(3) mobilising global support for India's public education system — strengthening school leadership, teaching and community participation at scale.">
-<link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+<meta name="description" content="Mantra4Change US is a registered 501(c)(3) mobilising global support for India's public education system — strengthening school leadership, teaching and community participation at scale.">
+<link rel="icon" href="assets/img/logo-mark.png">
 <meta property="og:title" content="Mantra4Change US — Strengthening education leaders in India">
-<meta property="og:description" content="Partner with us to build stronger public education systems that empower educators, improve learning, and create lasting change for millions of children.">
+<meta property="og:description" content="Mantra4Change US is a registered 501(c)(3) mobilising global support for India's public education system — strengthening school leadership, teaching and community participation at scale.">
+<meta property="og:image" content="assets/img/logo-full.png">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,19 +18,17 @@
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
-<!-- ============================================================ header -->
 <header class="site-header">
   <div class="wrap">
     <nav class="nav" aria-label="Main">
-      <a class="brand" href="index.html">
-        <img class="brand__mark" src="assets/img/logo.svg" alt="">
-        <span class="brand__name">Mantra4Change<span>United States</span></span>
+      <a class="brand" href="index.html" aria-label="Mantra4Change US, home">
+        <img class="brand__logo" src="assets/img/logo-full.png" alt="Mantra4Change US — Inspire. Enable. Transform.">
       </a>
       <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu"><span></span></button>
       <ul class="nav__links" id="nav-links">
         <li><a href="index.html" aria-current="page">Home</a></li>
         <li><a href="our-work.html">Our Work</a></li>
-        <li><a href="board.html">Board &amp; Team</a></li>
+        <li><a href="board.html">Our Board</a></li>
         <li><a href="donate.html">Donate</a></li>
         <li><a class="btn btn--primary nav__cta" href="donate.html">Give now</a></li>
       </ul>
@@ -39,258 +38,267 @@
 
 <main id="main">
 
-<!-- ============================================================== hero -->
-<section class="hero">
+<!-- ================================================================= HERO -->
+<section class="hero2">
+  <img class="birds birds--float" src="assets/img/birds-blue.png" alt="" style="top:4%;right:6%;width:clamp(80px,9vw,140px)">
   <div class="wrap">
-    <div class="hero__inner split">
+    <div class="hero2__grid">
+
       <div>
-        <p class="eyebrow">A 501(c)(3) supporting Mantra4Change India</p>
-        <h1 class="t-hero hero__title">Strengthening education leaders in <em>India</em></h1>
-        <p class="lede hero__lede">Partner with us to build stronger public education systems that empower educators, improve learning, and create lasting change for millions of children.</p>
+        <span class="pill">A registered 501(c)(3) in the United States<span class="pill__dot"></span></span>
+        <h1 class="hero2__title">Strengthening education leaders in <em>India</em></h1>
+        <p class="lede hero2__lede">Partner with us to build stronger public education systems that empower educators, improve learning, and create lasting change for millions of children.</p>
+
         <div class="btn-row">
-          <a class="btn btn--primary" href="donate.html">Donate now</a>
-          <a class="btn btn--ghost" href="our-work.html#impact">See our impact</a>
+          <a class="btn btn--primary" href="donate.html">Donate now
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="btn btn--ghost" href="our-work.html#footprint">See where we work</a>
+        </div>
+
+        <div class="trust">
+          <span class="trust__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Tax-deductible in the US</span>
+          <span class="trust__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Listed on Benevity Causes</span>
+          <span class="trust__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> 14 years on the ground</span>
         </div>
       </div>
 
-      <figure style="margin:0">
-        <div data-map data-animate></div>
-        <figcaption class="small center" style="color:var(--muted);max-width:34ch;margin-top:1rem">
-          Six states. 227,000+ government schools. Explore the numbers state by state on
-          <a href="our-work.html#footprint">Our Work</a>.
-        </figcaption>
-      </figure>
+      <!-- layered composition: photo, offset colour block, arcs, floating stat -->
+      <div class="compose">
+        <span class="compose__arc" aria-hidden="true"></span>
+        <span class="compose__arc compose__arc--2" aria-hidden="true"></span>
+
+        <div class="figure a-sky" data-photo="assets/img/hero.jpg" data-alt="A classroom in a government school in India" style="--ar:4/3">
+          <div class="figure__slot">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.8"/><path d="m21 15-5-5L5 21"/></svg>
+            <b>Hero photograph goes here</b>
+            <span>Save your image as <code>assets/img/hero.jpg</code> &mdash; it appears automatically. Landscape, 4:3, at least 1200px wide.</span>
+          </div>
+        </div>
+
+        <div class="floatcard floatcard--br a-sky">
+          <span class="floatcard__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </span>
+          <span>
+            <span class="floatcard__n tnum" data-count="32.3" data-decimals="1" data-suffix="M">32.3M</span>
+            <span class="floatcard__l">children reached</span>
+          </span>
+        </div>
+
+        <div class="floatcard floatcard--tl a-green">
+          <span class="floatcard__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/></svg>
+          </span>
+          <span>
+            <span class="floatcard__n tnum" data-count="6">6</span>
+            <span class="floatcard__l">Indian states</span>
+          </span>
+        </div>
+      </div>
     </div>
 
-    <div class="factstrip">
-      <div class="factstrip__item">
-        <div class="factstrip__n tnum" data-count="227000" data-suffix="+">227,000+</div>
-        <div class="factstrip__l">Schools reached</div>
-      </div>
-      <div class="factstrip__item">
-        <div class="factstrip__n tnum" data-count="232000" data-suffix="+">232,000+</div>
-        <div class="factstrip__l">Education leaders reached</div>
-      </div>
-      <div class="factstrip__item">
-        <div class="factstrip__n tnum" data-count="32.3" data-decimals="1" data-suffix="M">32.3M</div>
-        <div class="factstrip__l">Children reached</div>
-      </div>
-      <div class="factstrip__item">
-        <div class="factstrip__n tnum" data-count="14" data-suffix="+">14+</div>
-        <div class="factstrip__l">Years on the ground</div>
-      </div>
+    <!-- ticked fact rail, not a boxy grid -->
+    <div class="rail">
+      <div class="rail__item a-navy"><div class="rail__n tnum" data-count="227000" data-suffix="+">227,000+</div><div class="rail__l">Government schools reached</div></div>
+      <div class="rail__item a-sky"><div class="rail__n tnum" data-count="232000" data-suffix="+">232,000+</div><div class="rail__l">Education leaders supported</div></div>
+      <div class="rail__item a-green"><div class="rail__n tnum" data-count="17" data-prefix="$" data-suffix="M">$17M</div><div class="rail__l">Government budget unlocked</div></div>
+      <div class="rail__item a-orange"><div class="rail__n tnum" data-count="14" data-suffix="+">14+</div><div class="rail__l">Years working inside the system</div></div>
     </div>
   </div>
 </section>
 
-<!-- ========================================================= challenge -->
-<section class="band band--wash">
+<!-- ============================================================ CHALLENGE -->
+<section class="band band--ink on-dark band--rel band--curve-top">
+  <img class="birds birds--soft" src="assets/img/birds-blue.png" alt="" style="bottom:6%;left:3%;width:clamp(110px,14vw,220px)">
   <div class="wrap">
     <div class="measure" data-reveal>
       <p class="eyebrow">The challenge</p>
-      <h2 class="t-h2">Why India's education system needs strengthening</h2>
-      <p class="lede">India is home to one of the world's largest public education systems, with over 121.6&nbsp;million children enrolled in government schools and more than 10&nbsp;million teachers shaping the future of the next generation. Yet ensuring that every child receives a quality education remains a complex challenge across the country's diverse social, cultural and geographic contexts.</p>
+      <h2 class="t-h2">One of the world&rsquo;s largest school systems</h2>
+      <p class="lede">India educates more children in government schools than most countries have people. Access is no longer the binding constraint &mdash; learning is.</p>
     </div>
 
-    <div class="grid grid-3 mt-3">
-      <div class="stat a-navy" data-reveal>
-        <div class="stat__n tnum" data-count="121.6" data-decimals="1" data-suffix="M">121.6M</div>
-        <div class="stat__l">Children in government schools</div>
-        <p class="stat__src">Source: UDISE+ 2024–25</p>
-      </div>
-      <div class="stat a-sky" data-reveal data-reveal-delay="90">
-        <div class="stat__n tnum" data-count="10" data-suffix="M+">10M+</div>
-        <div class="stat__l">Teachers in the system</div>
-        <p class="stat__src">Source: UDISE+ 2024–25</p>
-      </div>
-      <div class="stat a-orange" data-reveal data-reveal-delay="180">
-        <div class="stat__n tnum" data-count="8.2" data-decimals="1" data-suffix="%">8.2%</div>
-        <div class="stat__l">Secondary school dropout rate</div>
-        <p class="stat__src">Source: UDISE+ 2024–25</p>
-      </div>
+    <div class="stagger mt-3">
+        <div class="bigstat a-sky">
+          <div class="bignum tnum" data-count="121.6" data-decimals="1" data-suffix="M">121.6M</div>
+          <div class="bigstat__l">Children in government schools</div>
+          <div class="bigstat__src">UDISE+ 2024&ndash;25</div>
+        </div>
+        <div class="bigstat a-green">
+          <div class="bignum tnum" data-count="10" data-suffix="M+">10M+</div>
+          <div class="bigstat__l">Teachers in the system</div>
+          <div class="bigstat__src">UDISE+ 2024&ndash;25</div>
+        </div>
+        <div class="bigstat a-amber">
+          <div class="bignum tnum" data-count="8.2" data-decimals="1" data-suffix="%">8.2%</div>
+          <div class="bigstat__l">Secondary school dropout rate</div>
+          <div class="bigstat__src">UDISE+ 2024&ndash;25</div>
+        </div>
     </div>
 
-    <div class="note mt-3" data-reveal>
-      While access to education has improved significantly, learning outcomes continue to demand attention. According to <a href="https://asercentre.org/about-aser-2024/" target="_blank" rel="noopener">ASER 2024</a>, many children are still unable to achieve age-appropriate foundational reading and arithmetic skills — highlighting the need to not only bring children to school, but to make sure they keep learning and thrive once they are there.
-    </div>
+    <blockquote class="quote measure mt-3" style="margin-left:auto">
+      Many children are still unable to read at grade level or do basic arithmetic. The task is no longer getting children into school &mdash; it is making sure they learn once they are there.
+      <cite class="quote__src">Reflecting the findings of <a href="https://asercentre.org/about-aser-2024/" target="_blank" rel="noopener" style="color:var(--sky)">ASER 2024</a></cite>
+    </blockquote>
   </div>
 </section>
 
-<!-- ========================================================= about M4C -->
+<!-- ============================================================= APPROACH -->
 <section class="band">
   <div class="wrap">
-    <div class="measure" data-reveal>
-      <p class="eyebrow">About Mantra4Change India</p>
-      <h2 class="t-h2">Strengthening the system, not just schools</h2>
-      <p class="lede">Lasting change happens when the education system itself becomes stronger. Rather than working around the system, we work with it — partnering with governments to strengthen teacher capacity, school leadership, teacher education institutions and community participation.</p>
-    </div>
+    <div class="sticky-split">
+      <div class="sticky-split__head">
+        <p class="eyebrow">How Mantra4Change works</p>
+        <h2 class="t-h2">Strengthen the system, not just the school</h2>
+        <p class="lede">Rather than working around the system, we work with it &mdash; so improvement continues long after our direct involvement ends.</p>
+        <a class="btn btn--ghost mt-2" href="our-work.html">Explore our work</a>
+      </div>
 
-    <!-- Inspire → Enable → Transform is a real sequence, so the ordering carries meaning -->
-    <div class="ladder mt-3">
-      <div class="ladder__step a-sky" data-reveal>
-        <div class="ladder__mark">Inspire<small>Step one</small></div>
-        <div>
-          <h3 class="t-h4">Nurture the wider ecosystem</h3>
-          <p>We weave a network of civil society organisations through Shikshagraha, amplifying the focus on school improvement through shared resources, innovative programmes and collective action.</p>
-        </div>
-      </div>
-      <div class="ladder__step a-green" data-reveal data-reveal-delay="90">
-        <div class="ladder__mark">Enable<small>Step two</small></div>
-        <div>
-          <h3 class="t-h4">Build capacity inside government</h3>
-          <p>We partner with education departments at district, state and national levels — including SCERTs and DIETs — to co-create solutions that improve systemic structures, processes and school-level practice.</p>
-        </div>
-      </div>
-      <div class="ladder__step a-orange" data-reveal data-reveal-delay="180">
-        <div class="ladder__mark">Transform<small>Step three</small></div>
-        <div>
-          <h3 class="t-h4">Equip leaders to improve from within</h3>
-          <p>Education leaders at every level learn to identify challenges, make data-informed decisions and drive contextually relevant solutions — so improvement continues long after our direct involvement ends.</p>
-        </div>
-      </div>
-    </div>
+      <div class="flow">
+        <article class="flow__step a-sky">
+          <span class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/><circle cx="12" cy="12" r="4"/></svg>
+          </span>
+          <div>
+            <div class="flow__word">Inspire</div>
+            <h3>Nurture the wider ecosystem</h3>
+            <p>Through Shikshagraha we weave a network of civil society organisations, amplifying school improvement with shared resources and collective action.</p>
+          </div>
+        </article>
 
-    <h3 class="t-h3 mt-3" data-reveal>Initiatives that make this real</h3>
-    <div class="grid grid-4 mt-2">
-      <article class="card card--lift card--accent a-navy" data-reveal>
-        <h4 class="t-h4">School Leadership Development</h4>
-        <p>Head teachers and education officials build the skills to lead school improvement.</p>
-      </article>
-      <article class="card card--lift card--accent a-sky" data-reveal data-reveal-delay="70">
-        <h4 class="t-h4">Teacher Capacity Building</h4>
-        <p>Continuous professional development that reaches teachers where they already are.</p>
-      </article>
-      <article class="card card--lift card--accent a-green" data-reveal data-reveal-delay="140">
-        <h4 class="t-h4">Project Based Learning</h4>
-        <p>Classroom practice that improves outcomes in mathematics, science and English.</p>
-      </article>
-      <article class="card card--lift card--accent a-amber" data-reveal data-reveal-delay="210">
-        <h4 class="t-h4">System Strengthening</h4>
-        <p>Policy, planning and institutional capacity built with SCERTs, DIETs and departments.</p>
-      </article>
+        <article class="flow__step a-green">
+          <span class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          </span>
+          <div>
+            <div class="flow__word">Enable</div>
+            <h3>Build capacity inside government</h3>
+            <p>We partner with education departments, SCERTs and DIETs at district, state and national level to co-create solutions that change practice at scale.</p>
+          </div>
+        </article>
+
+        <article class="flow__step a-orange">
+          <span class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M23 6l-9.5 9.5-5-5L1 18"/><path d="M17 6h6v6"/></svg>
+          </span>
+          <div>
+            <div class="flow__word">Transform</div>
+            <h3>Equip leaders to improve from within</h3>
+            <p>Education leaders learn to identify challenges, make data-informed decisions and drive contextually relevant solutions of their own.</p>
+          </div>
+        </article>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ============================================================ impact -->
-<section class="band band--navy on-dark" id="impact">
+<!-- =============================================================== IMPACT -->
+<section class="band band--navy on-dark impact2 band--curve band--curve-top" id="impact">
+  <div class="impact2__map" data-map aria-hidden="true"></div>
   <div class="wrap">
     <div class="measure" data-reveal>
       <p class="eyebrow">Our impact</p>
-      <h2 class="t-h2">Fourteen years of working inside the system</h2>
-      <p class="lede">Across six states, we design context-specific programmes that respond to local needs and strengthen the capacity of teachers and school leaders — so every child gets an enriching learning experience.</p>
+      <h2 class="t-h2">Fourteen years working inside the system</h2>
+      <p class="lede">Across six states we design context-specific programmes that respond to local need and strengthen the capacity of teachers and school leaders.</p>
     </div>
 
-    <div class="grid grid-3 mt-3">
-      <div class="metric" data-reveal>
-        <div class="metric__n tnum" data-count="227000" data-suffix="+">227,000+</div>
-        <div class="metric__l">Schools reached</div>
-      </div>
-      <div class="metric" data-reveal data-reveal-delay="70">
-        <div class="metric__n tnum" data-count="232000" data-suffix="+">232,000+</div>
-        <div class="metric__l">Education leaders reached</div>
-      </div>
-      <div class="metric" data-reveal data-reveal-delay="140">
-        <div class="metric__n tnum" data-count="32.3" data-decimals="1" data-suffix="M">32.3M</div>
-        <div class="metric__l">Children reached</div>
-      </div>
-      <div class="metric" data-reveal data-reveal-delay="210">
-        <div class="metric__n tnum" data-count="6">6</div>
-        <div class="metric__l">States</div>
-      </div>
-      <div class="metric" data-reveal data-reveal-delay="280">
-        <div class="metric__n tnum" data-count="17" data-prefix="$" data-suffix="M">$17M</div>
-        <div class="metric__l">Government budget unlocked</div>
-      </div>
-      <div class="metric" data-reveal data-reveal-delay="350">
-        <div class="metric__n tnum" data-count="900000" data-prefix="$">$900,000</div>
-        <div class="metric__l">Catalytic funding unlocked</div>
-      </div>
+    <div class="metricgrid mt-3">
+      <div class="metric2" data-reveal><div class="metric2__n tnum" data-count="227000" data-suffix="+">227,000+</div><div class="metric2__l">Schools reached</div></div>
+      <div class="metric2" data-reveal data-reveal-delay="60"><div class="metric2__n tnum" data-count="232000" data-suffix="+">232,000+</div><div class="metric2__l">Education leaders reached</div></div>
+      <div class="metric2" data-reveal data-reveal-delay="120"><div class="metric2__n tnum" data-count="32.3" data-decimals="1" data-suffix="M">32.3M</div><div class="metric2__l">Children reached</div></div>
+      <div class="metric2" data-reveal data-reveal-delay="180"><div class="metric2__n tnum" data-count="6">6</div><div class="metric2__l">States</div></div>
+      <div class="metric2" data-reveal data-reveal-delay="240"><div class="metric2__n tnum" data-count="17" data-prefix="$" data-suffix="M">$17M</div><div class="metric2__l">Government budget unlocked</div></div>
+      <div class="metric2" data-reveal data-reveal-delay="300"><div class="metric2__n tnum" data-count="900000" data-prefix="$">$900,000</div><div class="metric2__l">Catalytic funding unlocked</div></div>
     </div>
 
     <div class="btn-row mt-3" data-reveal>
-      <a class="btn btn--primary" href="our-work.html#footprint">Explore our footprint</a>
-      <a class="btn btn--ghost" href="our-work.html">See how we work</a>
+      <a class="btn btn--primary" href="our-work.html#footprint">Explore the footprint state by state</a>
     </div>
   </div>
 </section>
 
-<!-- ========================================================= about US -->
-<section class="band">
+<!-- ============================================================== M4C US -->
+<section class="band band--rel">
+  <img class="birds birds--soft" src="assets/img/birds-green.png" alt="" style="top:8%;right:2%;width:clamp(100px,12vw,190px)">
   <div class="wrap">
-    <div class="measure" data-reveal>
-      <p class="eyebrow">About Mantra4Change US</p>
-      <h2 class="t-h2">Connecting global support to local change</h2>
-      <p class="lede">Mantra4Change US extends this mission by mobilising a global community of supporters who believe every child deserves access to quality education. By connecting individuals, philanthropists, foundations and organisations with high-impact education initiatives in India, we help raise resources, foster strategic partnerships and amplify collective action to strengthen public education at scale.</p>
-      <p>Every contribution supports long-term, sustainable improvements that empower educators, strengthen institutions and create better learning opportunities for millions of children.</p>
-    </div>
+    <div class="split">
+      <div data-reveal>
+        <p class="eyebrow">About Mantra4Change US</p>
+        <h2 class="t-h2">Connecting global support to local change</h2>
+        <p class="lede">We mobilise a global community of supporters who believe every child deserves access to quality education &mdash; connecting individuals, philanthropists, foundations and companies with high-impact education work in India.</p>
+        <p>Every contribution supports long-term, sustainable improvements that empower educators, strengthen institutions and create better learning opportunities for millions of children.</p>
+        <div class="btn-row mt-2">
+          <a class="btn btn--navy" href="donate.html">Ways to give</a>
+          <a class="btn btn--ghost" href="board.html">Meet our board</a>
+        </div>
+      </div>
 
-    <div class="grid grid-3 mt-3">
-      <article class="card card--accent a-sky" data-reveal>
-        <div class="card__icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      <div data-reveal data-reveal-delay="100">
+        <div class="featrow a-sky">
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>
+          <div><h3>Raise resources</h3><p>Fund long-term improvement in India&rsquo;s public education system rather than one-off interventions.</p></div>
         </div>
-        <h3 class="t-h4">Raise resources</h3>
-        <p>Support long-term improvements in India's public education system, not one-off interventions.</p>
-      </article>
-      <article class="card card--accent a-green" data-reveal data-reveal-delay="90">
-        <div class="card__icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <div class="featrow a-green">
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+          <div><h3>Build partnerships</h3><p>Bring together individuals, foundations and companies committed to education equity.</p></div>
         </div>
-        <h3 class="t-h4">Build partnerships</h3>
-        <p>Bring together individuals, foundations and organisations committed to education equity.</p>
-      </article>
-      <article class="card card--accent a-orange" data-reveal data-reveal-delay="180">
-        <div class="card__icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 6l-9.5 9.5-5-5L1 18"/><path d="M17 6h6v6"/></svg>
+        <div class="featrow a-orange">
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M23 6l-9.5 9.5-5-5L1 18"/><path d="M17 6h6v6"/></svg></span>
+          <div><h3>Multiply impact</h3><p>Strengthen the teachers, leaders and systems that reach millions of children every day.</p></div>
         </div>
-        <h3 class="t-h4">Multiply impact</h3>
-        <p>Help strengthen teachers, leaders and education systems that reach millions of children.</p>
-      </article>
+        <div class="featrow a-amber">
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span>
+          <div><h3>Give with confidence</h3><p>A registered 501(c)(3), with annual and financial reports published openly.</p></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- =============================================================== FAQ -->
-<section class="band band--wash">
+<!-- ================================================================== FAQ -->
+<section class="band band--wash band--curve-top band--curve">
   <div class="wrap">
-    <div class="measure" data-reveal>
-      <p class="eyebrow">Questions</p>
-      <h2 class="t-h2">Before you give</h2>
-    </div>
+    <div class="sticky-split">
+      <div class="sticky-split__head">
+        <p class="eyebrow">Questions</p>
+        <h2 class="t-h2">Before you give</h2>
+        <p>Anything we haven&rsquo;t covered? <a href="mailto:info@mantra4changeus.org">Write to us</a> &mdash; a real person replies.</p>
+      </div>
 
-    <div class="faq mt-2" data-reveal>
-      <!-- TODO: add the EIN to the first answer once confirmed by the US entity. -->
-      <div class="faq__item">
-        <h3 style="margin:0"><button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-1">Is my donation tax deductible?<span class="faq__sign" aria-hidden="true"></span></button></h3>
-        <div class="faq__a" id="faq-1"><div>Yes. Mantra4Change US is a registered 501(c)(3) non-profit organisation in the United States, so gifts from US taxpayers are tax deductible to the extent allowed by law. You will receive an acknowledgement by email for every contribution, which serves as your receipt.</div></div>
-      </div>
-      <div class="faq__item">
-        <h3 style="margin:0"><button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-2">How is my contribution used?<span class="faq__sign" aria-hidden="true"></span></button></h3>
-        <div class="faq__a" id="faq-2"><div>Contributions fund the programmes Mantra4Change runs with state governments in India — school leadership development, teacher capacity building, Project Based Learning in classrooms, and community engagement. Because the work is delivered through the public system rather than alongside it, each dollar supports improvements that keep running after a programme ends.</div></div>
-      </div>
-      <div class="faq__item">
-        <h3 style="margin:0"><button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-3">Can I donate monthly?<span class="faq__sign" aria-hidden="true"></span></button></h3>
-        <div class="faq__a" id="faq-3"><div>Yes. Recurring monthly gifts are the most useful kind of support we receive, because they let us commit to multi-year partnerships with state governments with confidence. You can set up, pause or change a monthly gift at any time.</div></div>
-      </div>
-      <div class="faq__item">
-        <h3 style="margin:0"><button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-4">Does Mantra4Change work directly with schools?<span class="faq__sign" aria-hidden="true"></span></button></h3>
-        <div class="faq__a" id="faq-4"><div>We work with government schools through formal partnerships with state and district education departments. Our teams support head teachers, teachers and education officials directly — through workshops, in-school mentoring and peer learning — while institutional reform happens with SCERTs, DIETs and Teacher Education Institutes.</div></div>
-      </div>
-      <div class="faq__item">
-        <h3 style="margin:0"><button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-5">How does Mantra4Change ensure accountability?<span class="faq__sign" aria-hidden="true"></span></button></h3>
-        <div class="faq__a" id="faq-5"><div>Programmes are evaluated with independent partners and monitored against baseline and endline data, and our annual and financial reports are published openly. You can read them on the <a href="donate.html#transparency">transparency section</a> of this site.</div></div>
-      </div>
-      <div class="faq__item">
-        <h3 style="margin:0"><button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-6">Can I partner as a company or foundation?<span class="faq__sign" aria-hidden="true"></span></button></h3>
-        <div class="faq__a" id="faq-6"><div>Yes. We work with corporate partners, family foundations and institutional funders on multi-year commitments, and we are listed on the Benevity Causes Portal for workplace giving and matching programmes. Write to us and we will share the partnership options that fit your goals.</div></div>
+      <div class="faq">
+        <!-- TODO: add the EIN to the first answer once confirmed. -->
+        <div class="faq__item">
+          <h3 style="margin:0"><button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-1">Is my donation tax deductible?<span class="faq__sign" aria-hidden="true"></span></button></h3>
+          <div class="faq__a" id="faq-1"><div>Yes. Mantra4Change US is a registered 501(c)(3) non-profit in the United States, so gifts from US taxpayers are tax deductible to the extent allowed by law. You will receive an acknowledgement by email for every contribution, which serves as your receipt.</div></div>
+        </div>
+        <div class="faq__item">
+          <h3 style="margin:0"><button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-2">How is my contribution used?<span class="faq__sign" aria-hidden="true"></span></button></h3>
+          <div class="faq__a" id="faq-2"><div>Contributions fund the programmes Mantra4Change runs with state governments in India &mdash; school leadership development, teacher capacity building, Project Based Learning and community engagement. Because the work is delivered through the public system rather than alongside it, each dollar supports improvements that keep running after a programme ends.</div></div>
+        </div>
+        <div class="faq__item">
+          <h3 style="margin:0"><button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-3">Can I donate monthly?<span class="faq__sign" aria-hidden="true"></span></button></h3>
+          <div class="faq__a" id="faq-3"><div>Yes, and it is the most useful kind of support we receive, because it lets us commit to multi-year partnerships with state governments with confidence. You can set up, pause or change a monthly gift at any time.</div></div>
+        </div>
+        <div class="faq__item">
+          <h3 style="margin:0"><button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-4">Does Mantra4Change work directly with schools?<span class="faq__sign" aria-hidden="true"></span></button></h3>
+          <div class="faq__a" id="faq-4"><div>We work with government schools through formal partnerships with state and district education departments. Our teams support head teachers, teachers and education officials directly, while institutional reform happens with SCERTs, DIETs and Teacher Education Institutes.</div></div>
+        </div>
+        <div class="faq__item">
+          <h3 style="margin:0"><button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-5">How does Mantra4Change ensure accountability?<span class="faq__sign" aria-hidden="true"></span></button></h3>
+          <div class="faq__a" id="faq-5"><div>Programmes are evaluated with independent partners and monitored against baseline and endline data, and our annual and financial reports are published openly. You can read them in the <a href="donate.html#transparency">transparency section</a>.</div></div>
+        </div>
+        <div class="faq__item">
+          <h3 style="margin:0"><button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-6">Can I partner as a company or foundation?<span class="faq__sign" aria-hidden="true"></span></button></h3>
+          <div class="faq__a" id="faq-6"><div>Yes. We work with corporate partners, family foundations and institutional funders on multi-year commitments, and we are listed on the Benevity Causes Portal for workplace giving and matching programmes.</div></div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ======================================================== footer CTA -->
+<!-- ================================================================== CTA -->
 <section class="band cta on-dark">
+  <img class="birds birds--float" src="assets/img/birds-yellow.png" alt="" style="top:12%;right:7%;width:clamp(80px,10vw,150px)">
   <div class="wrap center">
     <h2 class="cta__title center" data-reveal>Every contribution helps strengthen the people and systems shaping the future of education in India.</h2>
     <div class="btn-row mt-2" style="justify-content:center" data-reveal>
@@ -302,16 +310,12 @@
 
 </main>
 
-<!-- ============================================================ footer -->
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer__top">
       <div>
-        <a class="brand" href="index.html" style="margin-bottom:1rem">
-          <img class="brand__mark" src="assets/img/logo.svg" alt="">
-          <span class="brand__name" style="color:#fff">Mantra4Change<span>United States</span></span>
-        </a>
-        <p class="small">We mobilise global support for India's public education system, so that every child receives an enriching learning experience.</p>
+        <img class="brand__logo" src="assets/img/logo-full.png" alt="Mantra4Change US" style="margin-bottom:1.25rem;filter:brightness(0) invert(1)">
+        <p class="small">We mobilise global support for India&rsquo;s public education system, so that every child receives an enriching learning experience.</p>
         <span class="badge501">501(c)(3) &middot; Listed on Benevity Causes</span>
         <div class="social">
           <a href="https://www.instagram.com/mantra4changeus/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85C2.38 3.92 3.89 2.38 7.15 2.23 8.42 2.17 8.8 2.16 12 2.16zm0 5.68a4.16 4.16 0 1 0 0 8.32 4.16 4.16 0 0 0 0-8.32zm0 6.86a2.7 2.7 0 1 1 0-5.4 2.7 2.7 0 0 1 0 5.4zm5.34-7.03a.97.97 0 1 1-1.94 0 .97.97 0 0 1 1.94 0z"/></svg></a>
@@ -321,18 +325,16 @@
           <a href="https://www.youtube.com/@Mantra4Change" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 0 0-1.8-1.8C19.3 5 12 5 12 5s-7.3 0-8.8.5A2.5 2.5 0 0 0 1.4 7.3C1 8.8 1 12 1 12s0 3.2.4 4.7a2.5 2.5 0 0 0 1.8 1.8C4.7 19 12 19 12 19s7.3 0 8.8-.5a2.5 2.5 0 0 0 1.8-1.8C23 15.2 23 12 23 12zM9.8 15.1V8.9l6 3.1z"/></svg></a>
         </div>
       </div>
-
       <div>
         <h2 class="footer__h">Explore</h2>
         <ul class="footer__list">
           <li><a href="index.html">Home</a></li>
           <li><a href="our-work.html">Our work</a></li>
           <li><a href="our-work.html#footprint">Footprint</a></li>
-          <li><a href="board.html">Board &amp; team</a></li>
+          <li><a href="board.html">Our board</a></li>
           <li><a href="donate.html">Donate</a></li>
         </ul>
       </div>
-
       <div>
         <h2 class="footer__h">Mantra4Change India</h2>
         <ul class="footer__list">
@@ -343,15 +345,12 @@
           <li><a href="https://www.mantra4change.org/media-gallery/" target="_blank" rel="noopener">Media gallery</a></li>
         </ul>
       </div>
-
       <div>
         <h2 class="footer__h">Get in touch</h2>
-        <!-- TODO: replace with the official Mantra4Change US contact address. -->
         <p class="small">For partnerships, corporate giving and grant enquiries.</p>
         <a class="btn btn--ghost" href="mailto:info@mantra4changeus.org" style="margin-top:.5rem">Email us</a>
       </div>
     </div>
-
     <div class="footer__bar">
       <span>&copy; <span data-year>2026</span> Mantra4Change US. All rights reserved.</span>
       <span>Registered 501(c)(3) non-profit in the United States.</span>

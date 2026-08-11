@@ -54,7 +54,11 @@ board.html          US board / India board / leadership, with bio modals
 assets/css/style.css   All styling. Brand tokens are the first block in the file.
 assets/js/data.js      Generated — map geometry, per-state figures, board roster
 assets/js/site.js      Nav, scroll reveals, counters, accordion, tabs, map, modal
-assets/img/logo.svg    PLACEHOLDER MARK — replace with the real logo
+assets/img/logo-full.png   Official US lockup, used in header and footer
+assets/img/logo-mark.png   Mark only, used as the favicon
+assets/img/birds-*.png     Bird motif from the logo, used as section decoration
+assets/img/hero.jpg        HERO PHOTO — add this file, it appears automatically
+assets/img/board/          Board photos, named <slug>.jpg (see README.txt there)
 
 tools/build_map.py     Regenerates the India map paths from public district boundaries
 tools/gen_data.py      Regenerates assets/js/data.js
@@ -104,8 +108,11 @@ the rest render as a pale base layer. To change which states are active, edit th
 
 Items that need real information — each is marked with a `TODO` comment in the source:
 
-1. **Logo** — `assets/img/logo.svg` is a placeholder. Drop in the official US logo
-   (SVG preferred; a PNG works if you update the `<img src>` in all four pages).
+1. **Hero photograph** — save one image as `assets/img/hero.jpg` (landscape, 4:3,
+   at least 1200px wide). Until then the hero shows a labelled placeholder frame.
+2. **Board photographs** — drop square JPGs into `assets/img/board/` using the
+   exact filenames listed in `assets/img/board/README.txt`. Anyone without a photo
+   shows their initials, so you can add them a few at a time.
 2. **Donation form** — every "Donate" button currently points at an anchor on
    `donate.html`. Swap in the real payment URL (Givebutter, Donorbox, Benevity, etc.).
    Search for `#donate-options` and `#give`.
@@ -115,9 +122,6 @@ Items that need real information — each is marked with a `TODO` comment in the
 5. **Programme links** — the seven cards on `our-work.html` link to the closest existing
    page on the India site. Only Project Based Learning and STEP have dedicated pages;
    confirm the right destination for the other five.
-6. **Photography** — there are no photographs anywhere yet. Board members show initials;
-   the hero and section bands rely on the map and typography. Adding real classroom
-   photography is the single biggest visual upgrade available.
 7. **Impact figures** — see the note below.
 
 ### A note on the numbers

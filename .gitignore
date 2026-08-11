@@ -4,3 +4,4 @@ node_modules/
 *.log
 tools/india.geojson
 tools/__pycache__/
+tools/data.js

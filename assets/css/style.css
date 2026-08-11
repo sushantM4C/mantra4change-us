@@ -37,14 +37,15 @@
   --r-sm:   10px;
   --r:      18px;
   --r-lg:   28px;
-  --shadow:    0 2px 4px rgba(39,63,125,.04), 0 12px 28px rgba(39,63,125,.07);
-  --shadow-lg: 0 4px 8px rgba(39,63,125,.05), 0 24px 56px rgba(39,63,125,.12);
+  --shadow:    0 1px 2px rgba(39,63,125,.04), 0 4px 10px rgba(39,63,125,.05), 0 12px 28px rgba(39,63,125,.06);
+  --shadow-lg: 0 2px 4px rgba(39,63,125,.04), 0 10px 24px rgba(39,63,125,.08), 0 30px 64px rgba(39,63,125,.12);
+  --shadow-xl: 0 4px 8px rgba(39,63,125,.05), 0 18px 40px rgba(39,63,125,.10), 0 48px 100px rgba(39,63,125,.16);
   --ring:   0 0 0 3px rgba(0,177,255,.35);
 }
 
 /* ---------- reset ---------- */
 *, *::before, *::after { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 90px; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 108px; }
 body {
   margin: 0;
   font-family: var(--text);
@@ -151,7 +152,7 @@ p:last-child { margin-bottom: 0; }
   backdrop-filter: saturate(180%) blur(14px);
   border-bottom: 1px solid var(--line);
 }
-.nav { display: flex; align-items: center; gap: 1.5rem; height: 76px; }
+.nav { display: flex; align-items: center; gap: 1.5rem; height: 92px; }
 .brand { display: flex; align-items: center; gap: .7rem; text-decoration: none; margin-right: auto; }
 .brand__mark { width: 40px; height: 40px; flex: none; border-radius: 10px; }
 .brand__name {
@@ -189,7 +190,7 @@ p:last-child { margin-bottom: 0; }
 @media (max-width: 940px) {
   .nav__toggle { display: inline-flex; }
   .nav__links {
-    position: fixed; inset: 76px 0 auto 0;
+    position: fixed; inset: 92px 0 auto 0;
     flex-direction: column; align-items: stretch; gap: .15rem;
     background: #fff; border-bottom: 1px solid var(--line);
     padding: 1rem var(--gutter) 1.5rem;
@@ -254,7 +255,7 @@ p:last-child { margin-bottom: 0; }
   text-decoration: none;           /* cards are sometimes anchors */
   transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
 }
-.card--lift:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: transparent; }
+.card--lift:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); border-color: transparent; }
 .card__icon {
   width: 46px; height: 46px; border-radius: 13px; margin-bottom: 1.1rem;
   display: grid; place-items: center;
@@ -521,4 +522,360 @@ p:last-child { margin-bottom: 0; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   [data-reveal] { opacity: 1; transform: none; }
   .map--animate .map__state--active { opacity: 1; animation: none; }
+}
+
+
+/* ==========================================================================
+   LAYER 2 — depth, motif and section-rhythm variation
+   Added to break up the flat stacked-band rhythm of the first build.
+   ========================================================================== */
+
+/* ---------- brand lockup in the header / footer ---------- */
+.brand__logo { height: 62px; width: auto; display: block; }
+.site-footer .brand__logo { height: 62px; }
+@media (max-width: 620px) { .brand__logo { height: 42px; } }
+
+/* ---------- the birds motif: connective tissue between sections ---------- */
+/* Taken from the logo's ascending bird. Always flies up and to the right,
+   echoing the arrow in the wordmark. Decorative only. */
+.birds {
+  position: absolute; pointer-events: none; user-select: none;
+  width: clamp(90px, 12vw, 180px); opacity: .9;
+}
+.birds--sm { width: clamp(64px, 7vw, 104px); }
+.birds--soft { opacity: .16; }
+.birds--float { animation: drift 9s ease-in-out infinite; }
+@keyframes drift {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50%      { transform: translate(10px, -14px) rotate(-3deg); }
+}
+
+/* ---------- decorative arc, from the logo's spiral ---------- */
+.arc {
+  position: absolute; pointer-events: none; border-radius: 50%;
+  border: 1.5px solid rgba(39,63,125,.10);
+}
+.arc--sky { border-color: rgba(0,177,255,.18); }
+.on-dark .arc { border-color: rgba(255,255,255,.10); }
+
+/* ==========================================================================
+   HERO
+   ========================================================================== */
+.hero2 { position: relative; overflow: hidden; padding-block: clamp(2.5rem, 5vw, 4.5rem) clamp(3rem, 6vw, 5rem); }
+.hero2::before {
+  content: ""; position: absolute; inset: -40% -20% auto -30%; height: 150%;
+  background:
+    radial-gradient(40% 38% at 20% 20%, rgba(0,177,255,.15), transparent 70%),
+    radial-gradient(34% 34% at 82% 6%,  rgba(56,198,139,.12), transparent 68%),
+    radial-gradient(46% 44% at 60% 96%, rgba(193,235,244,.42), transparent 72%);
+  pointer-events: none;
+}
+.hero2 .wrap { position: relative; z-index: 2; }
+.hero2__grid {
+  display: grid; gap: clamp(2rem, 5vw, 4rem);
+  grid-template-columns: 1.02fr .98fr; align-items: center;
+}
+@media (max-width: 940px) { .hero2__grid { grid-template-columns: 1fr; } }
+
+.pill {
+  display: inline-flex; align-items: center; gap: .55rem;
+  font-family: var(--display); font-weight: 700; font-size: .8rem;
+  letter-spacing: .02em; padding: .5rem 1rem .5rem .6rem;
+  border-radius: 100px; background: #fff; color: var(--navy);
+  border: 1px solid var(--line); box-shadow: var(--shadow);
+}
+.pill__dot { width: 9px; height: 9px; border-radius: 50%; background: var(--green); flex: none; margin-left: .25rem; }
+.on-dark .pill { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.2); color: #fff; }
+
+.hero2__title { font-size: clamp(2.5rem, 5.4vw, 4.2rem); font-weight: 800; letter-spacing: -.037em; margin: 1.25rem 0 .5em; }
+.hero2__title em { font-style: normal; color: var(--sky); }
+.hero2__lede { max-width: 36ch; margin-bottom: 2rem; }
+
+/* trust row under the CTAs */
+.trust { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem 1.4rem; margin-top: 2rem; font-size: .875rem; color: var(--muted); }
+.trust__item { display: inline-flex; align-items: center; gap: .45rem; }
+.trust__item svg { width: 16px; height: 16px; color: var(--green); flex: none; }
+
+/* ---------- layered hero composition ---------- */
+.compose { position: relative; }
+.compose__arc {
+  position: absolute; inset: auto auto -8% -12%; width: 78%; aspect-ratio: 1;
+  border: 1.5px solid rgba(0,177,255,.2); border-radius: 50%; pointer-events: none;
+}
+.compose__arc--2 { inset: -10% -14% auto auto; width: 56%; border-color: rgba(56,198,139,.22); }
+
+/* Rounded-square photo frame with an offset colour block behind it. */
+.figure { position: relative; border-radius: var(--r-lg); }
+.figure::before {
+  content: ""; position: absolute; inset: 22px -22px -22px 22px;
+  border-radius: var(--r-lg); background: var(--accent, var(--sky)); opacity: .2; z-index: 0;
+}
+.figure__img {
+  position: relative; z-index: 1; display: block; width: 100%;
+  aspect-ratio: var(--ar, 4/3); object-fit: cover;
+  border-radius: var(--r-lg); box-shadow: var(--shadow-xl);
+  background: var(--wash-2);
+}
+/* Placeholder shown until a real photo is dropped in */
+.figure__slot {
+  position: relative; z-index: 1; display: grid; place-items: center; gap: .6rem;
+  width: 100%; aspect-ratio: var(--ar, 4/3); padding: 2rem; text-align: center;
+  border-radius: var(--r-lg); box-shadow: var(--shadow-xl);
+  background:
+    linear-gradient(135deg, rgba(0,177,255,.10), rgba(39,63,125,.10)),
+    repeating-linear-gradient(45deg, var(--wash) 0 12px, var(--wash-2) 12px 24px);
+  border: 2px dashed rgba(39,63,125,.22); color: var(--navy);
+}
+.figure__slot svg { width: 34px; height: 34px; opacity: .55; }
+.figure__slot b { font-family: var(--display); font-size: .95rem; }
+.figure__slot span { font-size: .8rem; color: var(--muted); max-width: 30ch; }
+
+/* stat card that floats over the photo edge */
+.floatcard {
+  position: absolute; z-index: 3; background: #fff;
+  border-radius: var(--r); padding: 1rem 1.25rem;
+  box-shadow: var(--shadow-lg); border: 1px solid var(--line);
+  display: flex; align-items: center; gap: .9rem;
+}
+.floatcard--br { right: -8px; bottom: -22px; }
+.floatcard--tl { left: -22px; top: 8%; }
+.floatcard__n { font-family: var(--display); font-weight: 800; font-size: 1.5rem; letter-spacing: -.03em; color: var(--navy); line-height: 1; }
+.floatcard__l { font-size: .78rem; color: var(--muted); margin-top: .2rem; }
+.floatcard__icon { width: 38px; height: 38px; border-radius: 11px; display: grid; place-items: center; background: var(--accent-soft, rgba(0,177,255,.12)); color: var(--navy); flex: none; }
+.floatcard__icon svg { width: 19px; height: 19px; }
+@media (max-width: 620px) {
+  .floatcard--tl { left: -6px; }
+  .floatcard--br { right: -4px; bottom: -16px; }
+}
+
+/* ---------- fact rail: horizontal, ticked, not a boxy grid ---------- */
+.rail {
+  display: grid; grid-auto-flow: column; grid-auto-columns: 1fr;
+  margin-top: clamp(2.5rem, 5vw, 3.75rem);
+  border-top: 1px solid var(--line); position: relative;
+}
+.rail__item { padding: 1.6rem 1.25rem 0 0; position: relative; }
+.rail__item::before {
+  content: ""; position: absolute; left: 0; top: -1px; width: 34px; height: 3px;
+  border-radius: 2px; background: var(--accent, var(--sky));
+}
+.rail__item + .rail__item { padding-left: 1.5rem; border-left: 1px solid var(--line); }
+.rail__item + .rail__item::before { left: 1.5rem; }
+.rail__n { font-family: var(--display); font-weight: 800; font-size: clamp(1.75rem, 2.9vw, 2.4rem); letter-spacing: -.035em; line-height: 1; color: var(--ink); }
+.rail__l { font-size: .85rem; color: var(--muted); margin-top: .45rem; }
+@media (max-width: 720px) {
+  .rail { grid-auto-flow: row; grid-auto-columns: auto; }
+  .rail__item, .rail__item + .rail__item { padding: 1.1rem 0 1.1rem 1.25rem; border-left: 0; }
+  .rail__item::before, .rail__item + .rail__item::before { left: 0; top: 1.35rem; width: 3px; height: 26px; }
+  .rail__item + .rail__item { border-top: 1px solid var(--line); }
+}
+
+/* ==========================================================================
+   ICON CHIPS — used far more widely than the first build
+   ========================================================================== */
+.ico {
+  display: grid; place-items: center; flex: none;
+  width: 52px; height: 52px; border-radius: 16px;
+  background: var(--accent-soft, var(--wash-2)); color: var(--ink);
+  box-shadow: inset 0 0 0 1px rgba(39,63,125,.06);
+}
+.ico svg { width: 25px; height: 25px; }
+.ico--sm { width: 40px; height: 40px; border-radius: 12px; }
+.ico--sm svg { width: 19px; height: 19px; }
+.ico--lg { width: 64px; height: 64px; border-radius: 20px; }
+.ico--lg svg { width: 30px; height: 30px; }
+.ico--round { border-radius: 50%; }
+.on-dark .ico { background: rgba(255,255,255,.1); color: #fff; box-shadow: inset 0 0 0 1px rgba(255,255,255,.12); }
+
+/* ==========================================================================
+   STAGGERED STAT BLOCK — deliberately not a tidy equal grid
+   ========================================================================== */
+.stagger { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1rem, 2.5vw, 2rem); align-items: start; }
+.stagger > :nth-child(2) { margin-top: clamp(1.5rem, 4vw, 3.25rem); }
+.stagger > :nth-child(3) { margin-top: clamp(2.5rem, 6vw, 5rem); }
+@media (max-width: 820px) {
+  .stagger { grid-template-columns: 1fr; }
+  .stagger > :nth-child(2), .stagger > :nth-child(3) { margin-top: 0; }
+}
+
+.bignum {
+  font-family: var(--display); font-weight: 800; letter-spacing: -.045em; line-height: .95;
+  font-size: clamp(2.5rem, 4.4vw, 3.9rem);
+  color: var(--accent, var(--sky));
+  overflow-wrap: break-word;      /* never let a long figure escape its column */
+}
+.bigstat__l { font-family: var(--display); font-weight: 700; font-size: 1.1rem; margin-top: .6rem; color: #fff; }
+.bigstat__src { font-size: .8rem; opacity: .55; margin-top: .4rem; }
+.bigstat { position: relative; padding-left: 1.25rem; border-left: 2px solid rgba(255,255,255,.16); }
+
+/* ==========================================================================
+   SPLIT WITH STICKY HEADING — breaks the "heading on top" rhythm
+   ========================================================================== */
+.sticky-split { display: grid; grid-template-columns: 1fr 1.22fr; gap: clamp(2rem, 6vw, 5rem); align-items: start; }
+.sticky-split__head { position: sticky; top: 120px; }
+/* headings sit in a narrower measure here, so cap them a step down */
+.sticky-split__head .t-h2 { font-size: clamp(1.85rem, 2.9vw, 2.4rem); }
+@media (max-width: 900px) {
+  .sticky-split { grid-template-columns: 1fr; }
+  .sticky-split__head { position: static; }
+}
+
+/* ---------- ladder with a drawn connector ---------- */
+.flow { position: relative; display: grid; gap: clamp(1.25rem, 3vw, 2rem); }
+.flow::before {
+  content: ""; position: absolute; left: 25px; top: 34px; bottom: 34px; width: 2px;
+  background: linear-gradient(180deg, var(--sky), var(--green) 50%, var(--orange));
+  opacity: .3; border-radius: 2px;
+}
+.flow__step {
+  position: relative; display: grid; grid-template-columns: auto 1fr; gap: 1.25rem;
+  background: #fff; border: 1px solid var(--line); border-radius: var(--r);
+  padding: clamp(1.25rem, 2.4vw, 1.75rem);
+  transition: transform .22s ease, box-shadow .22s ease;
+}
+.flow__step:hover { transform: translateX(4px); box-shadow: var(--shadow); }
+.flow__step .ico { box-shadow: 0 0 0 6px #fff, inset 0 0 0 1px rgba(39,63,125,.06); }
+.flow__word { font-family: var(--display); font-weight: 800; font-size: 1.2rem; letter-spacing: -.02em; color: var(--accent, var(--sky)); }
+.flow__step h3 { font-size: 1.05rem; margin: .15rem 0 .4rem; }
+.flow__step p { font-size: .975rem; margin: 0; }
+@media (max-width: 560px) { .flow::before { display: none; } .flow__step { grid-template-columns: 1fr; } }
+
+/* ==========================================================================
+   IMPACT — map as a background element, numbers laid over it
+   ========================================================================== */
+.impact2 { position: relative; overflow: hidden; }
+.impact2__map {
+  position: absolute; right: -4%; top: 50%; translate: 0 -50%;
+  width: min(46%, 520px); opacity: .17; pointer-events: none;
+}
+.impact2__map .map__state { fill: #fff; stroke: transparent; }
+.impact2__map .map__state--active { fill: var(--sky); }
+@media (max-width: 900px) { .impact2__map { right: -18%; width: 70%; opacity: .1; } }
+
+.metricgrid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: clamp(1.5rem, 3vw, 2.5rem); }
+@media (max-width: 760px) { .metricgrid { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+@media (max-width: 460px) { .metricgrid { grid-template-columns: 1fr; } }
+.metric2 { border-top: 2px solid rgba(255,255,255,.16); padding-top: 1.1rem; }
+.metric2__n { font-family: var(--display); font-weight: 800; font-size: clamp(2rem, 3.4vw, 2.8rem); letter-spacing: -.035em; line-height: 1; color: var(--sky); }
+.metric2__l { font-size: .9rem; opacity: .78; margin-top: .5rem; }
+
+/* ==========================================================================
+   OFFSET FEATURE — text one side, icon rows the other
+   ========================================================================== */
+.featrow { display: grid; grid-template-columns: auto 1fr; gap: 1.1rem; align-items: start; padding: 1.25rem 0; }
+.featrow + .featrow { border-top: 1px solid var(--line); }
+.featrow h3 { font-size: 1.075rem; margin: .3rem 0 .35rem; }
+.featrow p { font-size: .975rem; margin: 0; }
+.on-dark .featrow + .featrow { border-color: rgba(255,255,255,.14); }
+
+/* ---------- pull quote ---------- */
+.quote {
+  position: relative; padding: clamp(1.5rem, 3vw, 2rem) 0 0 clamp(2.5rem, 5vw, 3.5rem);
+  font-family: var(--display); font-weight: 600; letter-spacing: -.015em;
+  font-size: clamp(1.15rem, 2vw, 1.45rem); line-height: 1.5; color: var(--ink);
+}
+.quote::before {
+  content: "\201C"; position: absolute; left: 0; top: -.1em;
+  font-size: clamp(4rem, 8vw, 6rem); line-height: 1; color: var(--sky); opacity: .3;
+}
+.on-dark .quote { color: #fff; }
+.quote__src { display: block; margin-top: .9rem; font-family: var(--text); font-weight: 400; font-size: .875rem; color: var(--muted); }
+.on-dark .quote__src { color: rgba(255,255,255,.6); }
+
+/* ==========================================================================
+   BOARD — square rounded photo cards
+   ========================================================================== */
+.people { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: clamp(1.1rem, 2.2vw, 1.75rem); }
+@media (max-width: 1000px) { .people { grid-template-columns: repeat(3, minmax(0,1fr)); } }
+@media (max-width: 720px)  { .people { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+@media (max-width: 420px)  { .people { grid-template-columns: 1fr; } }
+
+.pcard {
+  position: relative; display: flex; flex-direction: column;
+  background: #fff; border: 1px solid var(--line); border-radius: var(--r-lg);
+  padding: .75rem .75rem 1.25rem; text-align: left;
+  transition: transform .24s cubic-bezier(.22,1,.36,1), box-shadow .24s ease, border-color .24s ease;
+}
+.pcard--clickable { cursor: pointer; font: inherit; }
+.pcard:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: transparent; }
+
+/* the square, rounded-corner frame */
+.pcard__frame {
+  position: relative; width: 100%; aspect-ratio: 1; border-radius: 20px;
+  overflow: hidden; background: var(--accent-soft, var(--wash-2)); margin-bottom: 1rem;
+}
+.pcard__photo { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+.pcard__initials {
+  position: absolute; inset: 0; display: grid; place-items: center;
+  font-family: var(--display); font-weight: 800; font-size: 2.1rem; letter-spacing: -.03em;
+  color: var(--navy); background: var(--accent-soft, var(--wash-2));
+}
+.pcard__frame::after {          /* subtle inner edge so photos sit properly in the frame */
+  content: ""; position: absolute; inset: 0; border-radius: 20px;
+  box-shadow: inset 0 0 0 1px rgba(39,63,125,.08); pointer-events: none;
+}
+.pcard__body { padding-inline: .5rem; flex: 1; display: flex; flex-direction: column; }
+.pcard__name { font-family: var(--display); font-weight: 700; font-size: 1.05rem; letter-spacing: -.015em; color: var(--ink); margin-bottom: .3rem; }
+.pcard__role { font-size: .85rem; line-height: 1.5; color: var(--muted); flex: 1; }
+.pcard__foot { display: flex; align-items: center; gap: .6rem; margin-top: 1rem; }
+.pcard__li {
+  display: grid; place-items: center; width: 34px; height: 34px; border-radius: 10px;
+  background: var(--wash); color: var(--navy); flex: none; transition: background-color .16s ease, color .16s ease;
+}
+.pcard__li:hover { background: #0a66c2; color: #fff; }
+.pcard__li svg { width: 17px; height: 17px; }
+.pcard__read { font-family: var(--display); font-weight: 700; font-size: .82rem; color: var(--sky-deep); }
+
+/* group header */
+.grouphead { display: grid; gap: .5rem; max-width: 60ch; margin-bottom: clamp(1.5rem, 3vw, 2.25rem); }
+.grouphead__count {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 30px; height: 30px; padding-inline: .5rem; border-radius: 9px;
+  background: var(--navy); color: #fff; font-family: var(--display); font-weight: 800; font-size: .9rem;
+}
+.grouphead__row { display: flex; align-items: center; gap: .75rem; }
+
+/* ---------- bio modal with photo ---------- */
+.biohead { display: grid; grid-template-columns: auto 1fr; gap: 1.25rem; align-items: center; margin-bottom: 1.5rem; }
+.biohead__frame { width: 104px; height: 104px; border-radius: 22px; overflow: hidden; position: relative; background: var(--wash-2); flex: none; }
+.biohead__frame img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+.biohead__initials { position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--display); font-weight: 800; font-size: 1.9rem; color: var(--navy); }
+@media (max-width: 520px) { .biohead { grid-template-columns: 1fr; } }
+
+/* ==========================================================================
+   SECTION TRANSITIONS — soften the hard band edges
+   ========================================================================== */
+.band--flushtop { padding-top: 0; }
+.pull-up { margin-top: clamp(-5.5rem, -7vw, -3.5rem); position: relative; z-index: 5; }
+.band--curve { border-radius: 0 0 clamp(28px, 5vw, 56px) clamp(28px, 5vw, 56px); }
+.band--curve-top { border-radius: clamp(28px, 5vw, 56px) clamp(28px, 5vw, 56px) 0 0; }
+.band--rel { position: relative; overflow: hidden; }
+
+/* soft fade between a wash band and white */
+.fadeband { position: relative; }
+.fadeband::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 120px;
+  background: linear-gradient(180deg, transparent, var(--paper)); pointer-events: none;
+}
+
+/* whole-card hit area for bios; sits under the LinkedIn link so both work */
+.pcard--clickable { cursor: pointer; }
+.pcard__hit {
+  position: absolute; inset: 0; z-index: 1;
+  background: none; border: 0; padding: 0; cursor: pointer;
+  border-radius: var(--r-lg);
+}
+.pcard__hit:focus-visible { box-shadow: var(--ring); }
+.pcard__foot > * { position: relative; z-index: 2; }
+
+/* On small screens the floating stat cards sit over the photo slot, so trim the
+   placeholder copy back to icon + title and give the frame more height. */
+@media (max-width: 620px) {
+  .figure__slot { --ar: 3/2; padding: 1.25rem; }
+  .figure__slot span { display: none; }
+  .floatcard { padding: .7rem .9rem; gap: .6rem; }
+  .floatcard__n { font-size: 1.2rem; }
+  .floatcard__icon { width: 32px; height: 32px; border-radius: 9px; }
+  .floatcard__icon svg { width: 16px; height: 16px; }
+  .birds { opacity: .7; }
 }
