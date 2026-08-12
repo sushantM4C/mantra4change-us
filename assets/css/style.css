@@ -69,6 +69,8 @@ h1, h2, h3, h4 {
   margin: 0 0 .5em;
   text-wrap: balance;
 }
+/* the biggest headings on every page carry the brand navy rather than near-black ink */
+h1, h2 { color: var(--navy); }
 p { margin: 0 0 1.1em; text-wrap: pretty; }
 p:last-child { margin-bottom: 0; }
 
@@ -139,6 +141,8 @@ p:last-child { margin-bottom: 0; }
 .btn--primary:hover { background: #24bcff; box-shadow: 0 10px 26px rgba(0,177,255,.42); }
 .btn--navy { background: var(--navy); color: #fff; box-shadow: 0 6px 18px rgba(39,63,125,.28); }
 .btn--navy:hover { background: var(--navy-deep); }
+.btn--sg { background: #562d90; color: #fff; box-shadow: 0 6px 18px rgba(86,45,144,.32); }
+.btn--sg:hover { background: #48257a; }
 .btn--ghost { background: transparent; color: var(--navy); border-color: rgba(39,63,125,.28); }
 .btn--ghost:hover { border-color: var(--navy); background: rgba(39,63,125,.05); }
 .on-dark .btn--ghost { color: #fff; border-color: rgba(255,255,255,.4); }
@@ -323,6 +327,40 @@ p:last-child { margin-bottom: 0; }
 .mapblock { display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(1.5rem, 4vw, 3.5rem); align-items: center; }
 @media (max-width: 900px) { .mapblock { grid-template-columns: 1fr; } }
 
+/* ---------- a light Shikshagraha-purple wash, for bands that sit beside the puzzle ---------- */
+.band--sg-tint { background: #efe7f8; }
+
+/* ---------- four-force puzzle: pieces in the Shikshagraha palette, converging on reveal ---------- */
+.puzzle { display: grid; grid-template-columns: repeat(2, 1fr); gap: 7px; max-width: 340px; margin-inline: auto; }
+.puzzle__piece {
+  position: relative; background: var(--pc); color: #fff;
+  border-radius: 14px; padding: 1rem .6rem; text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: .25rem;
+  transition: opacity .7s ease, transform .7s cubic-bezier(.22,1,.36,1);
+}
+.puzzle__icon { width: 30px; height: 30px; }
+.puzzle__icon img { width: 100%; height: 100%; object-fit: contain; }
+.puzzle__label { font-family: var(--display); font-weight: 800; font-size: .9rem; letter-spacing: -.01em; color: #fff; margin: 0; }
+.puzzle__hi { font-size: .7rem; font-style: italic; opacity: .85; }
+/* a small knob where each piece meets the centre, hinting at the four joining as one */
+.puzzle__piece::after { content: ""; position: absolute; width: 13px; height: 13px; border-radius: 50%; background: var(--pc); z-index: 2; }
+.puzzle__piece--tl::after { right: -6px; bottom: -6px; }
+.puzzle__piece--tr::after { left: -6px; bottom: -6px; }
+.puzzle__piece--bl::after { right: -6px; top: -6px; }
+.puzzle__piece--br::after { left: -6px; top: -6px; }
+/* converge in from each piece's own corner, like puzzle pieces settling into place */
+.puzzle__piece[data-reveal] { opacity: 0; }
+.puzzle__piece--tl[data-reveal] { transform: translate(-34px, -34px) rotate(-8deg); }
+.puzzle__piece--tr[data-reveal] { transform: translate(34px, -34px) rotate(8deg); }
+.puzzle__piece--bl[data-reveal] { transform: translate(-34px, 34px) rotate(8deg); }
+.puzzle__piece--br[data-reveal] { transform: translate(34px, 34px) rotate(-8deg); }
+.puzzle__piece[data-reveal].is-in { opacity: 1; transform: none; }
+
+/* ---------- film, with a small award badge floating to its right ---------- */
+.filmshowcase { display: grid; grid-template-columns: 1fr auto; gap: clamp(1.25rem, 3vw, 2rem); align-items: center; }
+.filmshowcase .photo-wrap { width: clamp(140px, 16vw, 190px); }
+@media (max-width: 760px) { .filmshowcase { grid-template-columns: 1fr; justify-items: center; } .filmshowcase .photo-wrap { width: 160px; } }
+
 .map { width: 100%; max-width: 460px; margin-inline: auto; height: auto; overflow: visible; }
 .map__state {
   fill: var(--wash-2); stroke: #fff; stroke-width: 1.6;
@@ -335,7 +373,7 @@ p:last-child { margin-bottom: 0; }
 .map--haspick .map__state--active { opacity: .32; }
 .map--haspick .map__state--active[data-selected="true"] { opacity: 1; }
 .map__state[data-selected="true"] { stroke: var(--ink); stroke-width: 3; }
-.map__state--active:focus-visible { outline: none; stroke: var(--ink); stroke-width: 3; }
+.map__state--active:focus-visible { outline: none; box-shadow: none; stroke: var(--ink); stroke-width: 3; }
 .on-dark .map__state { fill: rgba(255,255,255,.09); stroke: var(--navy); }
 
 /* load-in animation for the hero map */
@@ -521,6 +559,7 @@ p:last-child { margin-bottom: 0; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   [data-reveal] { opacity: 1; transform: none; }
+  .puzzle__piece[data-reveal] { opacity: 1; transform: none; }
   .map--animate .map__state--active { opacity: 1; animation: none; }
 }
 
