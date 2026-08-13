@@ -300,9 +300,11 @@
 
   function photoPath(slug) { return "assets/img/board/" + slug + ".jpg"; }
 
-  function personCard(person) {
+  function personCard(person, i) {
     var card = document.createElement("article");
     card.className = "pcard";
+    card.setAttribute("data-reveal", "");
+    card.setAttribute("data-reveal-delay", String(Math.min(i, 5) * 70));
 
     card.innerHTML =
       '<div class="pcard__frame">' +
@@ -340,13 +342,14 @@
     BOARD.forEach(function (group) {
       var head = document.createElement("div");
       head.className = "grouphead";
+      head.setAttribute("data-reveal", "");
       head.innerHTML = '<h2 class="t-h3" style="margin:0">' + group.title + "</h2>";
       host.appendChild(head);
 
       var grid = document.createElement("div");
       grid.className = "people";
       grid.style.marginBottom = "3.5rem";
-      group.people.forEach(function (person) { grid.appendChild(personCard(person)); });
+      group.people.forEach(function (person, i) { grid.appendChild(personCard(person, i)); });
       host.appendChild(grid);
     });
   }

@@ -924,6 +924,8 @@ p:last-child { margin-bottom: 0; }
    ========================================================================== */
 .imgband { position: relative; overflow: hidden; }
 .imgband__media { display: block; width: 100%; height: clamp(300px, 40vw, 520px); object-fit: cover; object-position: center 38%; }
+/* the subject's head sits close to the top edge of the source photo, so lean the crop toward the top instead of the centred default */
+.imgband__media--headroom { object-position: center 8%; }
 .imgband__scrim {
   position: absolute; inset: 0;
   background: linear-gradient(180deg, rgba(20,32,60,.10) 0%, rgba(20,32,60,.20) 40%, rgba(20,32,60,.86) 100%);
